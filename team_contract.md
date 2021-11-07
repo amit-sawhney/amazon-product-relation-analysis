@@ -41,3 +41,5 @@ be reviewed by at least one team member.
 Daniel Moon (dm32)
 
 Amit Sawhney (sawhney4)
+
+Joseph Kuang (jjkuang2)
