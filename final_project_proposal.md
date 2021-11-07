@@ -37,20 +37,26 @@ We will use the Page Rank algorithm to determine how important and how popular a
 
 - Parse the data
 - Setup Repo
+- Write Test Cases
 
 ### Week 1
 
 - Implement DFS
+- Write Test Cases
 
 ### Week 2
 
 - Implement Hierholzer's algorithm
+- Write Test Cases
 
 ### Week 3
 
 - Implement Page Rank
+- Write Test Cases
 
 ### Week 4
 
 - Write report
 - Create video
+- Create ReadME
+- Clean-Up Code
