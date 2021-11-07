@@ -14,7 +14,7 @@ Furthere processing is not necessary since the data set is already cleaned. We w
 ### DFS
 We will use DFS traversals to store the final graph into a file. The input will just be the starting node on the graph that we want to start our traversal from. The output will just be a file output illustrating the structure of our graph. 
 
-If the graph is not an entirely connected component, we will provide multiple starting nodes so that the DFS may traversal all parts of the grpah.
+If the graph is not an entirely connected component, we will provide multiple starting nodes so that the DFS may traversal all parts of the graph.
 
 - Big O: O(N)
 
