@@ -53,16 +53,17 @@ We will use the Page Rank algorithm to determine how important and how popular a
 
 ### Week 2
 
-- Implement Hierholzer's algorithm
+- Implement Djikstra's
 - Write Test Cases
 
 ### Week 3
 
-- Implement Page Rank
+- Implement Hierholzer's algorithm
 - Write Test Cases
 
 ### Week 4
 
+- If time remaining PageRank
 - Write report
 - Create video
 - Create ReadME
