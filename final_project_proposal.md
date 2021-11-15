@@ -1,7 +1,8 @@
 # Final Project Proposal
 
 ## Leading Question
-We are hoping to find some pattern between buying habits and how Amazon presents items that are frequently bought together. We also would like to explore the extent of importance of certain items, to see which items Amazon recommends together and see if we can find any vertices that act as "hubs" for many items, which means that it is more popular and bought with more other items. The final deliverable should rank these itmes by the number of items that are recommended with it and the shortest path between these "hub" nodes which reveals how likely it is to get from one place to another just through frequently bought together items. 
+In our project, we are hoping to find some pattern between buying habits and how Amazon presents items that are frequently bought together. Specifically, we would like to explore the extent of importance of certain items, to see which items Amazon recommends together and if we can find any vertices that act as "hubs" for many items, meaning that it is more popular and bought with more other items. 
+The final deliverable should rank these items by the number of items that are recommended with it and the shortest path between these "hub" nodes which reveals how likely it is to get from one place to another just through frequently bought together items. 
 
 ## Dataset Acquisition and Processing
 We will use the dataset from: http://snap.stanford.edu/data/amazon0302.html. The data is in a list of edges, so we will load each of these edges into a graph data structure. 
@@ -16,7 +17,7 @@ The edges will have a weight, where the edge weight is derived from 1/(number of
 ### DFS
 We will use DFS traversals to store the final graph into a file. The input will just be the starting node on the graph that we want to start our traversal from. The output will just be a file output illustrating the structure of our graph. 
 
-As we go through the traversal, we will keep track of the number of connected to see the connectivity of different groups of products and whether a certain product can reach another.
+As we go through the traversal, we will keep track of the number of connected components to see the connectivity of different groups of products and whether a certain product can reach another.
 
 - Big O: O(N)
 
@@ -58,7 +59,6 @@ We will use the Page Rank algorithm to determine how important and how popular a
 
 ### Sprint 4
 
-- If time remaining PageRank
 - Write report
 - Create video
 - Create ReadME
