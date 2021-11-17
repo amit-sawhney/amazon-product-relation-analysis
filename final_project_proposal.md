@@ -25,7 +25,7 @@ As we go through the traversal, we will keep track of the number of connected co
 
 We will use the shortest path algorithm to determine the least number of edges needed to go from one node to another. The input will be a node and the output will be an int of the number of edges. If they are not in the same connected component we will return a -1 or some other marking value. We are determining a shortest path between 2 vertices, where the algorithm will travel through the most commonly bought together items. We use Djikstra's because it is a weighted, directed graph.
 
-- Big O: O(N^2) (array) and O(M+N * Log(N)) (min priority queue) 
+- Big O: O(N^2) (array) or O(M+N * Log(N)) (min priority queue) 
 - Algorithm: Djikstra's
 
 ### Page Rank
