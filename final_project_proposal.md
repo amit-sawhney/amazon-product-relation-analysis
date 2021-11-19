@@ -21,9 +21,13 @@ As we go through the traversal, we will keep track of the number of connected co
 
 - Big O: O(N)
 
-### Shortest Path
+### "Shortest" Most Likely Path
 
-We will use the shortest path algorithm to determine the least number of edges needed to go from one node to another. The input will be a node and the output will be an int of the number of edges. If they are not in the same connected component we will return a -1 or some other marking value. We are determining a shortest path between 2 vertices, where the algorithm will travel through the most commonly bought together items. We use Djikstra's because it is a weighted, directed graph.
+We will use the Djikstra's shortest path algorithm to find the shortest most likely path through hub nodes. The input will be a node and the output will be the list of edges in the order they were traversed, therefore giving us a short likely path that a user could take through from one item to another item in Amazon.
+
+We are using the weight of edges 1/ outgoing incident edges to determine a path in which we can traverse through the most connected items in relatively short path.
+
+If they are not in the same connected component we will return a -1 or some other marking value. We are determining a shortest path between 2 vertices, where the algorithm will travel through the most commonly bought together items. We use Djikstra's because it is a weighted, directed graph.
 
 - Big O: O(N^2) (array) or O(M+N * Log(N)) (min priority queue) 
 - Algorithm: Djikstra's
