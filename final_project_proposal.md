@@ -13,8 +13,6 @@ Further processing is not necessary since the data set is already cleaned. We wi
 
 A fully loaded graph will look similar to what we covered in class with an adjacency list. There will be a vertex map of linked lists. Each linked list node head will be a vertex, which is a product on Amazon. With the corresponding nodes being the directional edges to each other vertex (ie. this product in the linked list was frequently bought with this other item). If an vertex i is connected to vertex j, then this denotes that the item i, is frequently bought together with item j, and this is not necessarily a bidirectional relationship. 
 
-The edges will have a weight, where the edge weight is derived from 1/(number of outgoing incident edges). This helps us to solve the leading question about the item that is the precursor to the most items bought with it.
-
 ## Graph Algorithms
 ### DFS
 We will use DFS traversals to store the final graph into a file. The input will just be the starting node on the graph that we want to start our traversal from. The output will just be a file output illustrating the structure of our graph. 
@@ -29,7 +27,9 @@ To calculate Betweenness Centrality we will run a variation of the Floyd-Warshal
 
 We will use Betweenness Centrality to determine which nodes are traversed the most through in order to reach other products. Since the Betweenness Centrality determines the number of shortests paths that go through the vertices, we can use it to determine which products experience the most traffic when traversing through the recommended products. In essence, we get another metric for determining "hub" nodes within the Amazon frequently bought together recommendations.
 
-The runtime for determining Betweenness Centrality is the same as Floyd-Warshal's shortest path algorithm, since we are just running Floyd-Warshall and then calculating the weights of each vertex.
+The input to this algorithm will be the whole Graph, and we will output a list of all the vertices with their corresponding betweenness centrality score.
+
+The runtime for determining Betweenness Centrality is the same as Floyd-Warshal's shortest path algorithm, since we are just running Floyd-Warshall and then calculating the weights of each vertex. 
 
 - Big O: O(N^3)
 
