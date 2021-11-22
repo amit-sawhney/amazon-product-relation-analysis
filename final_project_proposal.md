@@ -2,7 +2,9 @@
 
 ## Leading Question
 In our project, we are hoping to find some pattern between buying habits and how Amazon presents items that are frequently bought together. Specifically, we would like to explore the extent of importance of certain items, to see which items Amazon recommends together and if we can find any vertices that act as "hubs" for many items, meaning that it is more popular and bought with more other items. 
-The final deliverable should rank these items by the number of items that are recommended with it and the shortest path between these "hub" nodes which reveals how likely it is to get from one place to another just through frequently bought together items. 
+The final deliverable should rank these items by the number of items that are recommended with these "hub" nodes which reveals how likely it is to get from one place to another just through frequently bought together items.
+
+The difference in the output we get from Betweenness Centrality and PageRank is that PageRank shows where all the edges lead to, while the Betweennes Centrality shows where all the shortests paths will go through as opposed to where they will end up.
 
 ## Dataset Acquisition and Processing
 We will use the dataset from: http://snap.stanford.edu/data/amazon0302.html. The data is in a list of edges, so we will load each of these edges into a graph data structure. 
