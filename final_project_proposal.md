@@ -17,20 +17,20 @@ The edges will have a weight, where the edge weight is derived from 1/(number of
 ### DFS
 We will use DFS traversals to store the final graph into a file. The input will just be the starting node on the graph that we want to start our traversal from. The output will just be a file output illustrating the structure of our graph. 
 
-As we go through the traversal, we will keep track of the number of connected components to see the connectivity of different groups of products and whether a certain product can reach another.
+As we go through the traversal, we will keep track of the number of connected components to see the connectivity of different groups of products and whether a certain product can reach another. In case there is more than one connected component, we will keep track of the different nodes that make up the connected components and store them to help prevent errors in later algorithms.
 
 - Big O: O(N)
 
-### "Shortest" Most Likely Path
+### Betweenness Centrality
 
-We will use the Djikstra's shortest path algorithm to find the shortest most likely path through hub nodes. The input will be a node and the output will be the list of edges in the order they were traversed, therefore giving us a short likely path that a user could take through from one item to another item in Amazon.
+To calculate Betweenness Centrality we will run a variation of the Floyd-Warshall algorithm. Since we have determined above, which nodes are in which components, we will run the Betweenness Centrality Algorithm on each connected component if there are more than one. 
 
-We are using the weight of edges 1/ outgoing incident edges to determine a path in which we can traverse through the most connected items in relatively short path.
+We will use Betweenness Centrality to determine which nodes are traversed the most through in order to reach other products. Since the Betweenness Centrality determines the number of shortests paths that go through the vertices, we can use it to determine which products experience the most traffic when traversing through the recommended products. In essence, we get another metric for determining "hub" nodes within the Amazon frequently bought together recommendations.
 
-If they are not in the same connected component we will return a -1 or some other marking value. We are determining a shortest path between 2 vertices, where the algorithm will travel through the most commonly bought together items. We use Djikstra's because it is a weighted, directed graph.
+The runtime for determining Betweenness Centrality is the same as Floyd-Warshal's shortest path algorithm, since we are just running Floyd-Warshall and then calculating the weights of each vertex.
 
-- Big O: O(N^2) (array) or O(M+N * Log(N)) (min priority queue) 
-- Algorithm: Djikstra's
+- Big O: O(N^3)
+
 
 ### Page Rank
 
@@ -58,7 +58,7 @@ We will use the Page Rank algorithm to determine how important and how popular a
 
 ### Sprint 3
 
-- Implement Djikstra's
+- Implement Betweenness Centrality calculation
 - Write Test Cases
 
 ### Sprint 4
