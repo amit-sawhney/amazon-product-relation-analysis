@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o
+OBJS = main.o graph.o node.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -32,8 +32,14 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: src/main.cpp
+main.o: src/main.cpp src/graph.cpp src/graph.h
 	$(CXX) $(CXXFLAGS) src/main.cpp
+
+graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
+	$(CXX) $(CXXFLAGS) src/graph.cpp
+
+node.o: src/node.cpp src/node.h 
+	$(CXX) $(CXXFLAGS) src/node.cpp
 
 test: output_msg tests.o
 	$(LD) tests.o $(LDFLAGS) -o test
