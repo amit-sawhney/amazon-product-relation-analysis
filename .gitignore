@@ -33,3 +33,6 @@
 
 # Data
 data/data.txt
+
+#Mac Thing
+.vscode/c_cpp_properties.json

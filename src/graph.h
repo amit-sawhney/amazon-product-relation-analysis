@@ -3,32 +3,34 @@
 #include "node.h"
 #include <vector>
 #include <list>
+#include <fstream>
 #include <string>
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
 typedef vector<list<Node>> AdjList;
 
-class Graph {
+class Graph
+{
 
-    public:
+public:
+    Graph();
 
-        Graph();
+    Graph(AdjList edges, vector<Node> nodes_);
 
-        Graph(AdjList edges, vector<Node> nodes_);
+    Graph(string filename);
 
-        Graph(string filename);
+    void DFS() const;
 
-        void DFS() const;
+    void PageRank() const;
 
-        void PageRank() const;
+    void BetweennessCentrality() const;
 
-        void BetweennessCentrality() const;
-    
-    private:
+private:
+    AdjList edges_;
+    vector<Node> nodes_;
 
-        AdjList edges_;
-        vector<Node> nodes_;
-
-        void parseNodes(string filename);
+    void parseNodes(string filename);
 };

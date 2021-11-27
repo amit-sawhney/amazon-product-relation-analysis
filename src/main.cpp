@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
 
     cout << "I compiled" << endl;
 
@@ -12,5 +13,7 @@ int main() {
 
     cout << "The created node has an id of " << node.getId() << endl;
 
-    return 0;
+    Graph g("data/data.txt");
+
+        return 0;
 }
