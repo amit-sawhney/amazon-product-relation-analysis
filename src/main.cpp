@@ -15,5 +15,5 @@ int main()
 
     Graph g("data/data.txt");
 
-        return 0;
+    return 0;
 }

@@ -41,7 +41,6 @@ void Graph::parseNodes(string filename)
     int from, to;
     if (data.is_open())
     {
-        /* Reads a line from `wordsFile` into `word` until the file ends. */
         while (getline(data, edge))
         {
             if (edge[0] != '#')
