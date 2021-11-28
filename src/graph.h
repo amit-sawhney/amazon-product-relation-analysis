@@ -7,6 +7,8 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <map>
+#include <stack>
 
 using namespace std;
 
@@ -31,6 +33,9 @@ public:
 private:
     AdjList edges_;
     vector<Node> nodes_;
+    map<int, Node> visited_;
+    int connectedComponents_;
 
     void parseNodes(string filename);
+    void dfsHelper(int id);
 };

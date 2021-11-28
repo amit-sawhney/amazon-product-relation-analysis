@@ -25,7 +25,32 @@ void Graph::BetweennessCentrality() const
 
 void Graph::DFS() const
 {
+    connectedComponents = 0;
+    for (size_t i = 0; i < edges.size(); i++) {
+        if(!visited_[i]) {
+            dfsHelper(i);
+            connectedComponents++;
+        }
+    }
 }
+
+void Graph::dfsHelper(int id) {
+    stack<int> stack;
+
+    while (!stack.empty()) {
+        int top = stack.top();
+        top.pop();    
+        visited_[id] = true;
+
+        for (auto neighbor : edges_[id]) {
+            int neighborId = neighbor.getId();
+            if (!visited[neighborId]) {
+                stack.push(neightborId);
+            }
+        }
+    }
+}
+
 
 void Graph::PageRank() const
 {
