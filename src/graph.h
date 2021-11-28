@@ -10,7 +10,7 @@
 
 using namespace std;
 
-typedef vector<list<Node>> AdjList;
+typedef vector<list<Node*>> AdjList;
 
 class Graph
 {
@@ -18,7 +18,7 @@ class Graph
 public:
     Graph();
 
-    Graph(AdjList edges, vector<Node> nodes_);
+    Graph(AdjList edges, vector<Node> nodes);
 
     Graph(string filename);
 
@@ -32,5 +32,12 @@ private:
     AdjList edges_;
     vector<Node> nodes_;
 
+    // Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_.
+    void createNodeList();
+
+    /**
+     * Method that takes in a file and populates the adjacency list edges_.
+     * @param filename is the file with all the edges.
+     */
     void parseNodes(string filename);
 };
