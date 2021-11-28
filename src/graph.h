@@ -20,7 +20,7 @@ public:
 
     Graph(AdjList edges, vector<Node> nodes);
 
-    Graph(string filename);
+    Graph(string filename, size_t num_nodes);
 
     void DFS() const;
 
@@ -29,6 +29,8 @@ public:
     void BetweennessCentrality() const;
 
 private:
+    size_t num_nodes_;
+
     AdjList edges_;
     vector<Node> nodes_;
 

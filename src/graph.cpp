@@ -1,21 +1,21 @@
 #include "graph.h"
 
-#define NUM_NODES 262111
-
-using namespace std;
-
 Graph::Graph()
 {
+    num_nodes_ = 0;
 }
 
 Graph::Graph(AdjList edges, vector<Node> nodes)
 {
     edges_ = edges;
     nodes_ = nodes;
+    num_nodes_ = nodes_.size();
 }
 
-Graph::Graph(string filename)
+Graph::Graph(string filename, size_t num_nodes)
 {
+    num_nodes_ = num_nodes;
+    createNodeList();
     parseNodes(filename);
 }
 
@@ -33,16 +33,15 @@ void Graph::PageRank() const
 
 void Graph::createNodeList() 
 {
-    nodes_.resize(NUM_NODES, NULL);
-    for (size_t i = 0; i < NUM_NODES; i++) {
+    nodes_.resize(num_nodes_, NULL);
+    for (size_t i = 0; i < num_nodes_; i++) {
         nodes_[0] = Node(i);
     }
 }
 
 void Graph::parseNodes(string filename)
 {
-    createNodeList();
-    edges_.resize(NUM_NODES);
+    edges_.resize(num_nodes_);
 
     ifstream data(filename);
     string edge;
