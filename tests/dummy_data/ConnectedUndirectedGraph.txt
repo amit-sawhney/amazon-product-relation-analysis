@@ -1,0 +1,19 @@
+# Dummy Graph
+# This Graph Contains 1 Components with undirected edges.
+# Undirected Edges in this context means that one edge should be treated as two directed edges.
+# Nodes: 7      Edges: 14
+# FromNodeId	ToNodeId
+0	1
+0   2
+0	4
+1   0
+1   3
+1   6
+2   0  
+2   5
+3   1
+4   0
+4   5
+5   2
+5   4
+6   1
