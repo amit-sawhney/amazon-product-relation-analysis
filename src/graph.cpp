@@ -35,7 +35,7 @@ void Graph::createNodeList()
 {
     nodes_.resize(num_nodes_, NULL);
     for (size_t i = 0; i < num_nodes_; i++) {
-        nodes_[0] = Node(i);
+        nodes_[i] = Node(i);
     }
 }
 
@@ -45,7 +45,6 @@ void Graph::parseNodes(string filename)
 
     ifstream data(filename);
     string edge;
-    istringstream edgeStream;
 
     int from, to;
     if (data.is_open())
@@ -54,6 +53,7 @@ void Graph::parseNodes(string filename)
         {
             if (edge[0] != '#') // Ignore Comments from input file
             {
+                istringstream edgeStream;
                 edgeStream.str(edge);
                 edgeStream >> from;
                 edgeStream >> to;
@@ -62,4 +62,17 @@ void Graph::parseNodes(string filename)
             }
         }
     }
+}
+
+string Graph::outputEdges() const 
+{
+    string output;
+    for (size_t i = 0; i < num_nodes_; i++) {
+        output += '|' + to_string(i) + '|';
+        for (auto node : edges_[i]) {
+            output += " -> " + to_string(node->getId());
+        }
+        output += '\n';
+    }
+    return output;
 }
