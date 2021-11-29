@@ -23,29 +23,34 @@ void Graph::BetweennessCentrality() const
 {
 }
 
-void Graph::DFS() const
+void Graph::DFS()
 {
-    connectedComponents = 0;
-    for (size_t i = 0; i < edges.size(); i++) {
-        if(!visited_[i]) {
-            dfsHelper(i);
-            connectedComponents++;
+    vector<bool> visited;
+    visited.resize(num_nodes_, false);
+
+    connected_components_ = 0;
+    for (size_t i = 0; i < num_nodes_; i++) {
+        if(!visited[i]) {
+            DFSHelper(i, visited);
+            connected_components_++;
         }
     }
+    cout << "Number of Components: " << connected_components_ << endl;
 }
 
-void Graph::dfsHelper(int id) {
-    stack<int> stack;
+void Graph::DFSHelper(int id, vector<bool> &visited) {
+    stack<int> futureVisits;
+    futureVisits.push(id);
 
-    while (!stack.empty()) {
-        int top = stack.top();
-        top.pop();    
-        visited_[id] = true;
+    while (!futureVisits.empty()) {
+        int top = futureVisits.top();
+        futureVisits.pop();    
+        visited[top] = true;
 
-        for (auto neighbor : edges_[id]) {
-            int neighborId = neighbor.getId();
+        for (auto neighbor : edges_[top]) {
+            int neighborId = neighbor->getId();
             if (!visited[neighborId]) {
-                stack.push(neightborId);
+                futureVisits.push(neighborId);
             }
         }
     }

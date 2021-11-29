@@ -13,6 +13,7 @@ int main()
     cout << "The created node has an id of " << node.getId() << endl;
 
     Graph g("data/data.txt", 262111);
+    g.DFS();
 
     return 0;
 }
