@@ -1,6 +1,8 @@
 #include "graph.h"
 
 #define kDAMPENING 0.85
+#define KMAXITERATIONS 10
+#define kTOLERANCE 0.00001
 
 Graph::Graph()
 {
@@ -53,15 +55,36 @@ void Graph::DFSHelper(int id, vector<bool> &visited) {
     }
 }
 
-void Graph::PageRank() const
+vector<double> Graph::PageRank() const
 {
     // Step 1 Create Matrix
     Matrix matrix = createGoogleMatrix();
+
     // Step 2 Choose Random Markov Start Vector (Possibly just 1/N)
-    vector<double> startVec;
-    startVec.resize(num_nodes_, 1 / num_nodes_);
+    vector<double> probabilities;
+    probabilities.resize(num_nodes_, 1.0 / num_nodes_);
+
     // Step 3 Find Probabilities (Matrix Vector Multiplication)
+    probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
+    double norm = Linear::getNorm(probabilities);
+
     // Step 4 Repeat Step 3 until at steady state vector (When Norm of Vector is Below a Certain Point)
+    for (size_t i = 1; i < KMAXITERATIONS; i++) {
+        probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
+        double new_norm = Linear::getNorm(probabilities);
+        if (abs(norm - new_norm) < kTOLERANCE) {
+            std::cout << "Broker Early" << std::endl;
+            break;
+        }
+
+        // Printing to see steps
+        for (size_t i = 0; i < 3; i++) {
+            cout << probabilities[i] << ", ";
+        }
+        cout << endl;
+    }
+
+    return probabilities;
 }
 
 Matrix Graph::createGoogleMatrix() const {

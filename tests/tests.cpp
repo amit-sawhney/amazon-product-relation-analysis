@@ -94,4 +94,7 @@ TEST_CASE("2-Norm of Vector", "[sprint=1]") {
 }
 
 // Test Page Rank Works
-// Test Page Rank Works from different starting vectors?
+// TEST_CASE("Page Rank", "[sprint=1]") {
+//   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7);
+//   REQUIRE(vector<double>() == g.PageRank());
+// }

@@ -32,7 +32,12 @@ public:
      */
     void DFS();
 
-    void PageRank() const;
+    /**
+     * Method that will run Google's Page Rank Algorithm on its own graph.
+     * @return the probabilities of each of the nodes
+     * O(n ^ 2) Time. 
+     */
+    vector<double> PageRank() const;
 
     /**
      * Helper Method for PageRank that will create the Google Page Rank Matrix.

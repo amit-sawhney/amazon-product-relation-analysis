@@ -10,7 +10,7 @@ class Linear {
          * @param matrix of size m x n
          * @param vec of size n x 1
          * @return product of size n x 1
-         * O(n ^ 2) Time. 
+         * O(mn) Time. 
          */
         static vector<double> getMatrixVectorProduct(Matrix &matrix, vector<double> &vec) {
             vector<double> output;

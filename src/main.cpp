@@ -14,6 +14,7 @@ int main()
 
     Graph g("data/data.txt", 262111);
     g.DFS();
+    // g.PageRank(); // Currently Times out
 
     return 0;
 }
