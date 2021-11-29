@@ -1,13 +1,15 @@
 #pragma once
 
+#include "linear.hpp"
 #include "node.h"
-#include <vector>
-#include <list>
+
 #include <fstream>
-#include <string>
 #include <iostream>
+#include <list>
 #include <sstream>
 #include <stack>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -40,8 +42,6 @@ public:
      * O(n ^ 2) Time.
      */
     Matrix createGoogleMatrix() const;
-
-    vector<double> getMatrixVectorProduct(Matrix &matrix, vector<double> &vec) const ;
 
     void BetweennessCentrality() const;
 

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../catch/catch.hpp"
 #include "../src/graph.h"
+#include "../src/linear.hpp"
 #include "../src/node.h"
 
 using namespace std;
@@ -82,8 +83,15 @@ TEST_CASE("Google Page Rank Matrix", "[sprint=1]") {
 }
 
 TEST_CASE("Matrix Vector Multiplication", "[sprint=1]") {
-  Graph g;
   vector<vector<double>> matrix { {1.0, 2, 1}, {1.0, 0, 0}, {3, 2.0, 2} };
   vector<double> vec {1.0, 0.5, 1};
-  REQUIRE(vector<double>{3, 1, 6} == g.getMatrixVectorProduct(matrix, vec));
+  REQUIRE(vector<double>{3, 1, 6} == Linear::getMatrixVectorProduct(matrix, vec));
 }
+
+TEST_CASE("2-Norm of Vector", "[sprint=1]") {
+  vector<double> vec {1.0, 0.5, 2};
+  REQUIRE(5.25 == Linear::getNorm(vec));
+}
+
+// Test Page Rank Works
+// Test Page Rank Works from different starting vectors?
