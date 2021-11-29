@@ -57,6 +57,7 @@ void Graph::DFSHelper(int id, vector<bool> &visited) {
 void Graph::PageRank() const
 {
     // Step 1 Create Matrix
+    Matrix matrix = createGoogleMatrix();
     // Step 2 Choose Random Start Vector (Possibly just 1/N)
     // Step 3 Find Eigenvector
     // Step 4 Repeat Step 3 until at steady state vector
@@ -84,6 +85,18 @@ Matrix Graph::createGoogleMatrix() const {
         }
     }
     return matrix;
+}
+
+vector<double> Graph::getMatrixVectorProduct(Matrix &matrix, vector<double> &vec) const {
+    vector<double> output;
+    output.resize(matrix[0].size(), 0.0);
+
+    for (size_t r = 0; r < matrix[0].size(); r++) {
+        for (size_t c = 0; c < matrix.size(); c++) {
+            output[r] += matrix[r][c] * vec[c];
+        }
+    }
+    return output;
 }
 
 void Graph::BetweennessCentrality() const
