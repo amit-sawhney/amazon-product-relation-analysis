@@ -19,10 +19,6 @@ Graph::Graph(string filename, size_t num_nodes)
     parseNodes(filename);
 }
 
-void Graph::BetweennessCentrality() const
-{
-}
-
 void Graph::DFS()
 {
     vector<bool> visited;
@@ -56,8 +52,11 @@ void Graph::DFSHelper(int id, vector<bool> &visited) {
     }
 }
 
-
 void Graph::PageRank() const
+{
+}
+
+void Graph::BetweennessCentrality() const
 {
 }
 
@@ -105,4 +104,8 @@ string Graph::outputEdges() const
         output += '\n';
     }
     return output;
+}
+
+unsigned Graph::getConnectedComponents() const {
+    return connected_components_;
 }

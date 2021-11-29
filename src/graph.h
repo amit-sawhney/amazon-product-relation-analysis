@@ -23,6 +23,10 @@ public:
 
     Graph(string filename, size_t num_nodes);
 
+    /**
+     * Method that will run a DFS Traversal on the graph and count the number of connected components.
+     * O(n + m) Time.
+     */
     void DFS();
 
     void PageRank() const;
@@ -35,6 +39,8 @@ public:
      */
     string outputEdges() const;
 
+    unsigned getConnectedComponents() const;
+
 private:
     unsigned num_nodes_;
     unsigned connected_components_;
@@ -44,7 +50,7 @@ private:
 
     /** 
      * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
-     * O(n) time.
+     * O(n) Time.
      */
     void createNodeList();
 
@@ -55,5 +61,9 @@ private:
      */
     void parseNodes(string filename);
 
+    /**
+     * Helper Method for DFS Traversal that visits the neighboring edges of the specified id.
+     * O(n + m) Time.
+     */
     void DFSHelper(int id, vector<bool> &visited);
 };
