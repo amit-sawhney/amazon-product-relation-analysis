@@ -1,5 +1,7 @@
 #include "graph.h"
 
+#define kDAMPENING 0.85
+
 Graph::Graph()
 {
     num_nodes_ = 0;
@@ -54,6 +56,34 @@ void Graph::DFSHelper(int id, vector<bool> &visited) {
 
 void Graph::PageRank() const
 {
+    // Step 1 Create Matrix
+    // Step 2 Choose Random Start Vector (Possibly just 1/N)
+    // Step 3 Find Eigenvector
+    // Step 4 Repeat Step 3 until at steady state vector
+}
+
+Matrix Graph::createGoogleMatrix() const {
+    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_;
+    double noLinksInfluence = kDAMPENING / num_nodes_;
+
+    vector<double> default_row;
+    default_row.resize(num_nodes_, positiveAdjustment);
+    vector<vector<double>> matrix;
+    matrix.resize(num_nodes_, default_row);
+
+    for (size_t c = 0; c < num_nodes_; c++) {
+        if (edges_[c].size() == 0) {
+            for (size_t r = 0; r < num_nodes_; r++) {
+                matrix[r][c] += noLinksInfluence;
+            }
+        } else {
+            double influence = kDAMPENING / edges_[c].size();
+            for (auto node : edges_[c]) {
+                matrix[node->getId()][c] += influence;
+            }
+        }
+    }
+    return matrix;
 }
 
 void Graph::BetweennessCentrality() const

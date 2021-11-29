@@ -12,6 +12,7 @@
 using namespace std;
 
 typedef vector<list<Node*>> AdjList;
+typedef vector<vector<double>> Matrix;
 
 class Graph
 {
@@ -30,6 +31,18 @@ public:
     void DFS();
 
     void PageRank() const;
+
+    /**
+     * Helper Method for PageRank that will create the Google Page Rank Matrix.
+     * The influence of each page is split evenly between the pages it links to.
+     * We should divide each row entry by the total column sum.
+     * 
+     * If a node has no outgoing edges, there is an equal probability of going to any other edge then.
+     * 
+     * To arrive at a unique solution we will do M = 0.85 A + (0.15 / n) One
+     *      One is a matrix of size n x n where every entry is 1.
+     */
+    Matrix createGoogleMatrix() const;
 
     void BetweennessCentrality() const;
 
