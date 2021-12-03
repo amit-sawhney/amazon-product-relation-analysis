@@ -18,6 +18,7 @@ Graph::Graph(AdjList edges, vector<Node> nodes)
 
 Graph::Graph(string filename, size_t num_nodes)
 {
+    // Make sure num_nodes isn't zero.
     num_nodes_ = num_nodes;
     createNodeList();
     parseNodes(filename);
@@ -73,15 +74,14 @@ vector<double> Graph::PageRank() const
         probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
         double new_norm = Linear::getNorm(probabilities);
         if (abs(norm - new_norm) < kTOLERANCE) {
-            std::cout << "Broker Early" << std::endl;
             break;
         }
 
-        // Printing to see steps
-        for (size_t i = 0; i < 3; i++) {
-            cout << probabilities[i] << ", ";
-        }
-        cout << endl;
+        // Printing to see convergence rate - Delete this Later
+        // for (size_t i = 0; i < 3; i++) {
+        //     cout << probabilities[i] << ", ";
+        // }
+        // cout << endl;
     }
 
     return probabilities;

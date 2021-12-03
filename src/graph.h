@@ -29,6 +29,7 @@ public:
     /**
      * Method that will run a DFS Traversal on the graph and count the number of connected components.
      * O(n + m) Time.
+     * Possibly Output Path/Create Iterator.
      */
     void DFS();
 

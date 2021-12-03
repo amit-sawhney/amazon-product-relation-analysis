@@ -93,8 +93,23 @@ TEST_CASE("2-Norm of Vector", "[sprint=1]") {
   REQUIRE(5.25 == Linear::getNorm(vec));
 }
 
-// Test Page Rank Works
-// TEST_CASE("Page Rank", "[sprint=1]") {
-//   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7);
-//   REQUIRE(vector<double>() == g.PageRank());
-// }
+// Test Page Rank Works Collectively
+TEST_CASE("Page Rank - Connected Graph", "[sprint=1]") {
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7);
+  vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
+  vector<double> actual = g.PageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(actual[i]));
+  }
+}
+
+TEST_CASE("Page Rank - Multiple Components Graph", "[sprint=1]") {
+  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12);
+  vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
+  vector<double> actual = g.PageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(actual[i]));
+  }
+}

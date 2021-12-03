@@ -10,6 +10,7 @@ class Linear {
          * @param matrix of size m x n
          * @param vec of size n x 1
          * @return product of size n x 1
+         *      Strassen's matrix multiplication
          * O(mn) Time. 
          */
         static vector<double> getMatrixVectorProduct(Matrix &matrix, vector<double> &vec) {
