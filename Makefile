@@ -1,6 +1,6 @@
 EXENAME = main
-OBJS = main.o graph.o node.o
-TEST_OBJS = graph.o node.o tests.o
+OBJS = main.o graph.o node.o dfs.o
+TEST_OBJS = graph.o node.o tests.o dfs.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -42,12 +42,14 @@ graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
 node.o: src/node.cpp src/node.h 
 	$(CXX) $(CXXFLAGS) src/node.cpp
 
+dfs.o: src/dfs.cpp src/dfs.h src/node.cpp src/node.h src/graph.h src/graph.cpp
+	$(CXX) $(CXXFLAGS) src/dfs.cpp
+
 test: output_msg $(TEST_OBJS)
 	$(LD) $(TEST_OBJS) $(LDFLAGS) -o test
 
 tests.o: tests/tests.cpp catch/catch.hpp
 	$(CXX) $(CXXFLAGS) tests/tests.cpp
-
 
 clean:
 	-rm -f *.o $(EXENAME) test

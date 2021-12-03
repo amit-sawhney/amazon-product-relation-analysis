@@ -1,5 +1,4 @@
 #include "graph.h"
-#include "dfs.h"
 Graph::Graph()
 {
     num_nodes_ = 0;
@@ -21,8 +20,14 @@ Graph::Graph(string filename, size_t num_nodes)
 
 void Graph::Traversal()
 {
-    // DFS dfs(edges_, nodes_);
-    DFS dfs;
+    ofstream myfile;
+    myfile.open ("output.txt");
+    DFS dfs(edges_, nodes_);
+    for (auto it = dfs.begin(); it != dfs.end(); ++it) {
+        myfile << (*it).getId();
+    }
+
+    myfile.close();
 }
 
 
