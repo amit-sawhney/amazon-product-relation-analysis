@@ -1,6 +1,7 @@
 #pragma once
 
 #include "node.h"
+#include "dfs.h"
 #include <vector>
 #include <list>
 #include <fstream>
@@ -27,7 +28,7 @@ public:
      * Method that will run a DFS Traversal on the graph and count the number of connected components.
      * O(n + m) Time.
      */
-    void DFS();
+    void Traversal();
 
     void PageRank() const;
 
@@ -38,6 +39,7 @@ public:
      * O(m) Time.
      */
     string outputEdges() const;
+    string outputTraversalOrder() const;
 
     unsigned getConnectedComponents() const;
 
@@ -47,7 +49,7 @@ private:
 
     AdjList edges_;
     vector<Node> nodes_;
-
+    
     /** 
      * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
      * O(n) Time.

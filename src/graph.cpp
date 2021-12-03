@@ -1,5 +1,5 @@
 #include "graph.h"
-
+#include "dfs.h"
 Graph::Graph()
 {
     num_nodes_ = 0;
@@ -19,38 +19,13 @@ Graph::Graph(string filename, size_t num_nodes)
     parseNodes(filename);
 }
 
-void Graph::DFS()
+void Graph::Traversal()
 {
-    vector<bool> visited;
-    visited.resize(num_nodes_, false);
-
-    connected_components_ = 0;
-    for (size_t i = 0; i < num_nodes_; i++) {
-        if(!visited[i]) {
-            DFSHelper(i, visited);
-            connected_components_++;
-        }
-    }
-    cout << "Number of Components: " << connected_components_ << endl;
+    // DFS dfs(edges_, nodes_);
+    DFS dfs;
 }
 
-void Graph::DFSHelper(int id, vector<bool> &visited) {
-    stack<int> futureVisits;
-    futureVisits.push(id);
 
-    while (!futureVisits.empty()) {
-        int top = futureVisits.top();
-        futureVisits.pop();    
-        visited[top] = true;
-
-        for (auto neighbor : edges_[top]) {
-            int neighborId = neighbor->getId();
-            if (!visited[neighborId]) {
-                futureVisits.push(neighborId);
-            }
-        }
-    }
-}
 
 void Graph::PageRank() const
 {

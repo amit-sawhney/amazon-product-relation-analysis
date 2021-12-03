@@ -1,6 +1,7 @@
 #include <iostream>
 #include "graph.h"
 #include "node.h"
+#include "dfs.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main()
     cout << "The created node has an id of " << node.getId() << endl;
 
     Graph g("data/data.txt", 262111);
-    g.DFS();
+    g.Traversal();
 
     return 0;
 }

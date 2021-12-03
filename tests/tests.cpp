@@ -60,3 +60,9 @@ TEST_CASE("Number of Connected Components - Multiple Components Undirected Graph
   g.DFS();
   REQUIRE(3 == g.getConnectedComponents());
 }
+
+TEST_CASE("Correct number traversal order", "[sprint=1]") {
+  Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7);
+  g.DFS();
+  std::cout << g.outputTraversalOrder() << std::endl;
+}
