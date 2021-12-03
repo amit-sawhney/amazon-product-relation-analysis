@@ -19,40 +19,44 @@ Graph::Graph(string filename, size_t num_nodes)
     parseNodes(filename);
 }
 
-void Graph::BetweennessCentrality() const
+void Graph::DFS()
 {
-}
+    vector<bool> visited;
+    visited.resize(num_nodes_, false);
 
-void Graph::DFS() const
-{
-    connectedComponents = 0;
-    for (size_t i = 0; i < edges.size(); i++) {
-        if(!visited_[i]) {
-            dfsHelper(i);
-            connectedComponents++;
+    connected_components_ = 0;
+    for (size_t i = 0; i < num_nodes_; i++) {
+        if(!visited[i]) {
+            DFSHelper(i, visited);
+            connected_components_++;
         }
     }
+    cout << "Number of Components: " << connected_components_ << endl;
 }
 
-void Graph::dfsHelper(int id) {
-    stack<int> stack;
+void Graph::DFSHelper(int id, vector<bool> &visited) {
+    stack<int> futureVisits;
+    futureVisits.push(id);
 
-    while (!stack.empty()) {
-        int top = stack.top();
-        top.pop();    
-        visited_[id] = true;
+    while (!futureVisits.empty()) {
+        int top = futureVisits.top();
+        futureVisits.pop();    
+        visited[top] = true;
 
-        for (auto neighbor : edges_[id]) {
-            int neighborId = neighbor.getId();
+        for (auto neighbor : edges_[top]) {
+            int neighborId = neighbor->getId();
             if (!visited[neighborId]) {
-                stack.push(neightborId);
+                futureVisits.push(neighborId);
             }
         }
     }
 }
 
-
 void Graph::PageRank() const
+{
+}
+
+void Graph::BetweennessCentrality() const
 {
 }
 
@@ -100,4 +104,8 @@ string Graph::outputEdges() const
         output += '\n';
     }
     return output;
+}
+
+unsigned Graph::getConnectedComponents() const {
+    return connected_components_;
 }

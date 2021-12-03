@@ -7,7 +7,6 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include <map>
 #include <stack>
 
 using namespace std;
@@ -24,7 +23,11 @@ public:
 
     Graph(string filename, size_t num_nodes);
 
-    void DFS() const;
+    /**
+     * Method that will run a DFS Traversal on the graph and count the number of connected components.
+     * O(n + m) Time.
+     */
+    void DFS();
 
     void PageRank() const;
 
@@ -36,17 +39,18 @@ public:
      */
     string outputEdges() const;
 
+    unsigned getConnectedComponents() const;
+
 private:
-    size_t num_nodes_;
+    unsigned num_nodes_;
+    unsigned connected_components_;
 
     AdjList edges_;
     vector<Node> nodes_;
-    map<int, Node> visited_;
-    int connectedComponents_;
 
     /** 
      * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
-     * O(n) time.
+     * O(n) Time.
      */
     void createNodeList();
 
@@ -56,5 +60,10 @@ private:
      * @param filename is the file with all the edges.
      */
     void parseNodes(string filename);
-    void dfsHelper(int id);
+
+    /**
+     * Helper Method for DFS Traversal that visits the neighboring edges of the specified id.
+     * O(n + m) Time.
+     */
+    void DFSHelper(int id, vector<bool> &visited);
 };
