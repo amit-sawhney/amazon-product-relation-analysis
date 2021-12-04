@@ -62,10 +62,4 @@ private:
      * @param filename is the file with all the edges.
      */
     void parseNodes(string filename);
-
-    /**
-     * Helper Method for DFS Traversal that visits the neighboring edges of the specified id.
-     * O(n + m) Time.
-     */
-    void DFSHelper(int id, vector<bool> &visited);
 };

@@ -12,7 +12,6 @@ DFS::DFS(AdjList &edges, vector<Node> &nodes)
             connected_components_++;
         }
     }
-    cout << "Number of Components: " << connected_components_ << endl;
 }
 
 void DFS::DFSHelper(int id, vector<bool> &visited, AdjList &edges, vector<Node> &nodes) {
@@ -36,33 +35,38 @@ void DFS::DFSHelper(int id, vector<bool> &visited, AdjList &edges, vector<Node> 
     }
 }
 
-DFS::Iterator::Iterator(unsigned index) {
+DFS::Iterator::Iterator(unsigned index, vector<Node*> &traversal_order) {
     if (index >= traversal_order_.size()) {
         current_ = NULL;
     } else {
         current_ = traversal_order_[index];
     }
     index_ = index;
+    traversal_order_ = traversal_order;
 }
 
 DFS::Iterator DFS::begin() {
-    return DFS::Iterator(0);
+    return DFS::Iterator(0, traversal_order_);
 }
 
 DFS::Iterator DFS::end() {
-    return DFS::Iterator(traversal_order_.size());
+    return DFS::Iterator(traversal_order_.size(), traversal_order_);
 }
 
 Node* DFS::Iterator::operator*() const {
+    if (index_ >= traversal_order_.size()) {
+        return NULL;
+    }
     return traversal_order_[index_];
 }
 
 DFS::Iterator DFS::Iterator::operator++() {
-    return DFS::Iterator(index_ + 1);
+    index_ += 1;
+    return DFS::Iterator(index_, traversal_order_);
 }
 
 bool DFS::Iterator::operator!=(const Iterator &other) {
-    return *(*this) == *other;
+    return *(*this) != *other;
 }
 
 int DFS::getConnectedComponents() {

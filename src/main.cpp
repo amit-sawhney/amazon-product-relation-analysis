@@ -7,13 +7,8 @@ using namespace std;
 
 int main()
 {
-    cout << "I compiled" << endl;
-
-    Node node(1);
-
-    cout << "The created node has an id of " << node.getId() << endl;
-
-    Graph g("data/data.txt", 262111);
+    // Graph g("data/data.txt", 262111);
+    Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7);
     g.Traversal();
 
     return 0;

@@ -33,7 +33,7 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: src/main.cpp src/graph.cpp src/graph.h
+main.o: src/main.cpp src/graph.cpp src/graph.h src/dfs.cpp src/dfs.h
 	$(CXX) $(CXXFLAGS) src/main.cpp
 
 graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
@@ -42,7 +42,7 @@ graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
 node.o: src/node.cpp src/node.h 
 	$(CXX) $(CXXFLAGS) src/node.cpp
 
-dfs.o: src/dfs.cpp src/dfs.h src/node.cpp src/node.h src/graph.h src/graph.cpp
+dfs.o: src/dfs.cpp src/dfs.h src/node.cpp src/node.h src/graph.cpp src/graph.h 
 	$(CXX) $(CXXFLAGS) src/dfs.cpp
 
 test: output_msg $(TEST_OBJS)

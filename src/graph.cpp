@@ -21,15 +21,15 @@ Graph::Graph(string filename, size_t num_nodes)
 
 void Graph::Traversal()
 {
+    DFS dfs(edges_, nodes_);
+
     ofstream myfile;
     myfile.open ("output.txt");
-    DFS dfs(edges_, nodes_);
     for (auto it = dfs.begin(); it != dfs.end(); ++it) {
         myfile << (*it)->getId();
     }
     myfile.close();
 }
-
 
 void Graph::PageRank() const
 {
