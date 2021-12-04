@@ -1,4 +1,5 @@
 #include "graph.h"
+
 Graph::Graph()
 {
     num_nodes_ = 0;
@@ -24,12 +25,10 @@ void Graph::Traversal()
     myfile.open ("output.txt");
     DFS dfs(edges_, nodes_);
     for (auto it = dfs.begin(); it != dfs.end(); ++it) {
-        myfile << (*it).getId();
+        myfile << (*it)->getId();
     }
-
     myfile.close();
 }
-
 
 
 void Graph::PageRank() const

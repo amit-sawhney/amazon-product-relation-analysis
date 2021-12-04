@@ -1,6 +1,5 @@
 #include "dfs.h"
 
-
 DFS::DFS(AdjList &edges, vector<Node> &nodes)
 {
     vector<bool> visited;
@@ -37,15 +36,6 @@ void DFS::DFSHelper(int id, vector<bool> &visited, AdjList &edges, vector<Node> 
     }
 }
 
-// string DFS::outputTraversalOrder() const {
-//     string output;
-
-//     for (auto node: traversal_order_) {
-//         output += to_string(node -> getId()) + '\n'; 
-//     }
-//     return output;
-// }
-
 DFS::Iterator::Iterator(unsigned index) {
     if (index >= traversal_order_.size()) {
         current_ = NULL;
@@ -63,7 +53,7 @@ DFS::Iterator DFS::end() {
     return DFS::Iterator(traversal_order_.size());
 }
 
-Node* DFS::Iterator::operator*() {
+Node* DFS::Iterator::operator*() const {
     return traversal_order_[index_];
 }
 
@@ -71,6 +61,10 @@ DFS::Iterator DFS::Iterator::operator++() {
     return DFS::Iterator(index_ + 1);
 }
 
-bool DFS::Iterator::operator!=(Iterator &other) {
-    return **this == *other;
+bool DFS::Iterator::operator!=(const Iterator &other) {
+    return *(*this) == *other;
+}
+
+int DFS::getConnectedComponents() {
+    return connected_components_;
 }

@@ -39,30 +39,24 @@ TEST_CASE("Parse Nodes - Multiple Components Undirected Graph", "[sprint=0]") {
 // Beginning of Counting the Number of Connected Components Tests
 TEST_CASE("Number of Connected Components - Connected Directed Graph", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7);
-  g.DFS();
+  g.Traversal();
   REQUIRE(1 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7);
-  g.DFS();
+  g.Traversal();
   REQUIRE(1 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Multiple Components Directed Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12);
-  g.DFS();
+  g.Traversal();
   REQUIRE(4 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Multiple Components Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12);
-  g.DFS();
+  g.Traversal();
   REQUIRE(3 == g.getConnectedComponents());
-}
-
-TEST_CASE("Correct number traversal order", "[sprint=1]") {
-  Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7);
-  g.DFS();
-  std::cout << g.outputTraversalOrder() << std::endl;
 }
