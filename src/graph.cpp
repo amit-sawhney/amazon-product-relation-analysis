@@ -3,13 +3,15 @@
 Graph::Graph()
 {
     num_nodes_ = 0;
+    name_ = "";
 }
 
-Graph::Graph(AdjList edges, vector<Node> nodes)
+Graph::Graph(AdjList edges, vector<Node> nodes, string name)
 {
     edges_ = edges;
     nodes_ = nodes;
     num_nodes_ = nodes_.size();
+    name_ = name;
 }
 
 Graph::Graph(string filename, size_t num_nodes)
@@ -17,6 +19,7 @@ Graph::Graph(string filename, size_t num_nodes)
     num_nodes_ = num_nodes;
     createNodeList();
     parseNodes(filename);
+    name_ = name;
 }
 
 void Graph::Traversal()
@@ -24,9 +27,11 @@ void Graph::Traversal()
     DFS dfs(edges_, nodes_);
 
     ofstream myfile;
-    myfile.open ("output.txt");
+    myfile.open (name + "_Traversal.txt");
+    myfile << "Path Traversal:" << endl;
+
     for (auto it = dfs.begin(); it != dfs.end(); ++it) {
-        myfile << (*it)->getId();
+        myfile << (*it)->getId() << endl;
     }
     myfile.close();
 }

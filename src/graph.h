@@ -20,9 +20,9 @@ class Graph
 public:
     Graph();
 
-    Graph(AdjList edges, vector<Node> nodes);
+    Graph(AdjList edges, vector<Node> nodes, string name);
 
-    Graph(string filename, size_t num_nodes);
+    Graph(string filename, size_t num_nodes, string name);
 
     /**
      * Method that will run a DFS Traversal on the graph and count the number of connected components.
@@ -49,6 +49,7 @@ private:
 
     AdjList edges_;
     vector<Node> nodes_;
+    string name_;
     
     /** 
      * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 

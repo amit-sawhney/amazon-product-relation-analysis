@@ -7,8 +7,7 @@ using namespace std;
 
 int main()
 {
-    // Graph g("data/data.txt", 262111);
-    Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7);
+    Graph g("data/data.txt", 262111, "Amazon_Items");
     g.Traversal();
 
     return 0;

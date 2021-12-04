@@ -39,17 +39,11 @@ class DFS {
                 vector<Node*> traversal_order_;
         };
 
-        /**
-         * The begining of an iterator - index = 0
-         */
         Iterator begin();
-
-        /**
-         * The end of an iterator - index = size(traversal_order_)
-         */
         Iterator end();
 
         int getConnectedComponents();
+        
     private:
         int connected_components_;
         vector<Node*> traversal_order_;
