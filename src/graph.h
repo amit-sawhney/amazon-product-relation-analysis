@@ -44,9 +44,7 @@ public:
     vector<double> PageRank() const;
 
     /**
-     * Method that will run Google's Page Rank Algorithm on its own graph with a sparse matrix.
-     * @return the probabilities of each of the nodes
-     * O(n ^ 2) Time. 
+     * Method for PageRank but uses a sparse matrix to save space and time.
      */
     vector<double> SparsePageRank() const;
 
@@ -59,6 +57,9 @@ public:
      */
     Matrix createGoogleMatrix() const;
 
+    /** 
+     * Helper Method for PageRank but uses a sparse matrix to save space and time.
+     */
     SparseMatrix createSparseGoogle() const;
 
     void BetweennessCentrality() const;

@@ -13,7 +13,6 @@ class Linear {
          * @param matrix of size m x n
          * @param vec of size n x 1
          * @return product of size n x 1
-         *      Strassen's matrix multiplication
          * O(mn) Time. 
          */
         static vector<double> getMatrixVectorProduct(const Matrix &matrix, const vector<double> &vec) {
@@ -28,7 +27,14 @@ class Linear {
             return output;
         }
 
-        // double sparseValue = (1.0 - kDAMPENING) / vec.size(); - for Google Matrix
+        /**
+         * Method that Gets the Matrix Vector Product when the Matrix is Sparse
+         * @param sparse of size m x n
+         * @param vec of size n x 1
+         * @param sparseValue is the values for the entrices not in the sparse matrix
+         * @return product of size n x 1
+         * O(mn) Time.
+         */
         static vector<double> getSparseProduct(const SparseMatrix &sparse, const vector<double> &vec, double sparseValue) {
             double vecSum = getVectorSum(vec);
 
