@@ -8,8 +8,10 @@
 
 using namespace std;
 
-TEST_CASE("The Makefile executes properly", "[compilation-check]") {
-  REQUIRE(true);
+TEST_CASE("Build Node - Node ID is instantiated", "[sprint=1]") {
+  Node node(1);
+
+  REQUIRE(node.getId() == 1);
 }
 
 // Beginning of Parsing the Graph Tests
