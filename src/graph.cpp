@@ -34,7 +34,8 @@ void Graph::Traversal()
 
     ofstream myfile;
     myfile.open (name_ + "_Traversal.txt");
-    myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes:" << endl;
+    myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes with " 
+            << to_string(connected_components_) << " Connected Component(s):" << endl;
 
     for (auto it = dfs.begin(); it != dfs.end(); ++it) {
         myfile << (*it)->getId() << endl;
@@ -51,7 +52,7 @@ vector<double> Graph::PageRank() const
     vector<double> probabilities;
     probabilities.resize(num_nodes_, 1.0 / num_nodes_);
 
-    // Step 3 Find Probabilities (Matrix Vector Multiplication)
+    // Step 3 Find 1st Probabilities (Matrix Vector Multiplication)
     probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
     double norm = Linear::getNorm(probabilities);
 
@@ -62,15 +63,21 @@ vector<double> Graph::PageRank() const
         if (abs(norm - new_norm) < kTOLERANCE) {
             break;
         }
-
-        // Printing to see convergence rate - Delete this Later
-        // for (size_t i = 0; i < 3; i++) {
-        //     cout << probabilities[i] << ", ";
-        // }
-        // cout << endl;
     }
 
+    savePageRank(probabilities);
     return probabilities;
+}
+
+void Graph::savePageRank(const vector<double> &probabilities) const {
+    ofstream myfile;
+    myfile.open (name_ + "_PageRank.txt");
+    myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
+
+    for (unsigned i = 0; i < probabilities.size(); i++) {
+        myfile << "Node " << to_string(i) << " -> " << probabilities[i] << endl;
+    }
+    myfile.close();
 }
 
 Matrix Graph::createGoogleMatrix() const {

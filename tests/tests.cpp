@@ -86,33 +86,33 @@ string readFile(string filename)
 TEST_CASE("DFS Traversal - Connected Directed Graph", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal for 7 nodes:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 7 nodes with 1 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversals - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal for 7 nodes:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 7 nodes with 1 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Directed Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal for 12 nodes:\n0\n4\n5\n1\n6\n3\n2\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 12 nodes with 4 Connected Component(s):\n0\n4\n5\n1\n6\n3\n2\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal for 12 nodes:\n0\n4\n5\n2\n1\n6\n3\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 12 nodes with 3 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 // Beginning of Testing Google Page Rank
-TEST_CASE("Google Page Rank Matrix", "[sprint=1]") {
+TEST_CASE("Create Google Page Rank Matrix", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
 
   vector<vector<double>> expected {{0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
@@ -153,6 +153,7 @@ TEST_CASE("Page Rank - Connected Graph", "[sprint=1]") {
       REQUIRE(expected[i] == Approx(actual[i]));
   }
   remove("Test_Traversal.txt");
+  remove("Test_PageRank.txt");
 }
 
 TEST_CASE("Page Rank - Multiple Components Graph", "[sprint=1]") {
@@ -164,4 +165,5 @@ TEST_CASE("Page Rank - Multiple Components Graph", "[sprint=1]") {
       REQUIRE(expected[i] == Approx(actual[i]));
   }
   remove("Test_Traversal.txt");
+  remove("Test_PageRank.txt");
 }
