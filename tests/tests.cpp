@@ -7,6 +7,7 @@
 #include "../src/node.h"
 
 using namespace std;
+typedef tuple<unsigned, double> entry;
 
 // Beginning of Parsing the Graph Tests
 TEST_CASE("Parse Nodes - Connected Directed Graph", "[sprint=0]") {
@@ -147,15 +148,57 @@ TEST_CASE("Matrix Vector Multiplication", "[sprint=1]") {
   REQUIRE(vector<double>{3, 1, 6} == Linear::getMatrixVectorProduct(matrix, vec));
 }
 
+TEST_CASE("Sparse Matrix Vector Multiplication", "[sprint=1]") {
+  vector<list<tuple<unsigned, double>>> s_matrix { {entry(0, 1), entry(1, 2), entry(2, 1)}, 
+                                                  {entry(0, 1)}, 
+                                                  {entry(0, 3), entry(1, 2), entry(2, 2)}};
+  vector<double> vec {1.0, 0.5, 1};
+  REQUIRE(vector<double>{3, 1, 6} == Linear::getSparseProduct(s_matrix, vec, 0));
+}
+
+TEST_CASE("Sparse Matrix Vector Multiplication with NonZero Sparse Values", "[sprint=1]") {
+  vector<list<tuple<unsigned, double>>> s_matrix { {entry(0, 1), entry(1, 2), entry(2, 1)}, 
+                                                  {entry(0, 1)}, 
+                                                  {entry(0, 3), entry(1, 2), entry(2, 2)}};
+  vector<double> vec {1.0, 0.5, 1};
+  REQUIRE(vector<double>{3, 1.75, 6} == Linear::getSparseProduct(s_matrix, vec, 0.5));
+}
+
 TEST_CASE("2-Norm of Vector", "[sprint=1]") {
   vector<double> vec {1.0, 0.5, 2};
   REQUIRE(5.25 == Linear::getNorm(vec));
 }
 
 // Test Page Rank Works Collectively
-TEST_CASE("Page Rank - Connected Graph", "[sprint=1]") {
+TEST_CASE("Page Rank - Connected Graph - Condensed", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
+  vector<double> actual = g.PageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(actual[i]));
+  }
+
+  remove("Test_Traversal.txt");
+  remove("Test_PageRank.txt");
+}
+
+TEST_CASE("Page Rank - Connected Graph - Sparse", "[sprint=1]") {
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+  vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
+  vector<double> sparse = g.SparsePageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(sparse[i]));
+  }
+
+  remove("Test_Traversal.txt");
+  remove("Test_PageRank.txt");
+}
+
+TEST_CASE("Page Rank - Multiple Components Graph - Condensed", "[sprint=1]") {
+  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+  vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
   vector<double> actual = g.PageRank();
 
   for (size_t i = 0; i < expected.size(); i++) {
@@ -165,13 +208,13 @@ TEST_CASE("Page Rank - Connected Graph", "[sprint=1]") {
   remove("Test_PageRank.txt");
 }
 
-TEST_CASE("Page Rank - Multiple Components Graph", "[sprint=1]") {
+TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[sprint=1]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
   vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
-  vector<double> actual = g.PageRank();
+  vector<double> sparse = g.SparsePageRank();
 
   for (size_t i = 0; i < expected.size(); i++) {
-      REQUIRE(expected[i] == Approx(actual[i]));
+      REQUIRE(expected[i] == Approx(sparse[i]));
   }
   remove("Test_Traversal.txt");
   remove("Test_PageRank.txt");

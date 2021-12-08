@@ -44,6 +44,13 @@ public:
     vector<double> PageRank() const;
 
     /**
+     * Method that will run Google's Page Rank Algorithm on its own graph with a sparse matrix.
+     * @return the probabilities of each of the nodes
+     * O(n ^ 2) Time. 
+     */
+    vector<double> SparsePageRank() const;
+
+    /**
      * Helper Method for PageRank that will create the Google Page Rank Matrix.
      * The influence of each page is split evenly between the pages it links to. We should divide each row entry by the total column sum.
      * If a node has no outgoing edges, there is an equal probability of going to any other edge then.

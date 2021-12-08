@@ -2,8 +2,8 @@
 #include <vector>
 using namespace std;
 
-typedef vector<list<Node*>> AdjList;
 typedef vector<vector<double>> Matrix;
+typedef vector<list<tuple<unsigned, double>>> SparseMatrix;
 #define kDAMPENING 0.85
 
 class Linear {
@@ -28,25 +28,20 @@ class Linear {
             return output;
         }
 
-        static vector<double> getSparseProduct(const AdjList &adjList, const vector<double> &vec) {
-            double positiveAdjustment = (1.0 - kDAMPENING) / vec.size();
-            double noLinksInfluence = (kDAMPENING / vec.size()) + positiveAdjustment;
+        // double sparseValue = (1.0 - kDAMPENING) / vec.size(); - for Google Matrix
+        static vector<double> getSparseProduct(const SparseMatrix &sparse, const vector<double> &vec, double sparseValue) {
             double vecSum = getVectorSum(vec);
 
             vector<double> output;
             output.resize(vec.size(), 0.0);
             
-            for (size_t i = 0; i < vec.size(); i++) {
-                if (adjList[i].size() == 0) {
-                    output[i] = noLinksInfluence * vecSum;
-                } else {
-                    double nonZeroSum = 0.0;
-                    for (const auto &node : adjList[i]) {
-                        nonZeroSum += vec[node->getId()];
-                    }
-                    output[i] += nonZeroSum * kDAMPENING / adjList[i].size();
-                    output[i] += positiveAdjustment * (vecSum - nonZeroSum) * (vec.size() - adjList[i].size());
+            for (size_t i = 0; i < sparse.size(); i++) {
+                double nonZeroSum = 0.0;
+                for (const auto &tup : sparse[i]) {
+                    nonZeroSum += vec[get<0>(tup)];
+                    output[i] += get<1>(tup) * vec[get<0>(tup)];
                 }
+                output[i] += sparseValue * (vecSum - nonZeroSum);
             }
             return output;
         }
