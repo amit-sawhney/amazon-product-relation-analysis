@@ -96,7 +96,7 @@ Matrix Graph::createGoogleMatrix() const {
             }
         } else {
             double influence = kDAMPENING / edges_[c].size();
-            for (auto node : edges_[c]) {
+            for (const auto &node : edges_[c]) {
                 matrix[node->getId()][c] += influence;
             }
         }
