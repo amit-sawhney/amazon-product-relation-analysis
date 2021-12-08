@@ -1,18 +1,21 @@
 #pragma once
 
-#include "node.h"
 #include "dfs.h"
-#include <vector>
-#include <list>
+#include "node.h"
+#include "linear.hpp"
+
 #include <fstream>
-#include <string>
 #include <iostream>
+#include <list>
 #include <sstream>
 #include <stack>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 typedef vector<list<Node*>> AdjList;
+typedef vector<vector<double>> Matrix;
 
 class Graph
 {
@@ -27,10 +30,25 @@ public:
     /**
      * Method that will run a DFS Traversal on the graph and count the number of connected components.
      * O(n + m) Time.
+     * Possibly Output Path/Create Iterator.
      */
     void Traversal();
 
-    void PageRank() const;
+    /**
+     * Method that will run Google's Page Rank Algorithm on its own graph.
+     * @return the probabilities of each of the nodes
+     * O(n ^ 2) Time. 
+     */
+    vector<double> PageRank() const;
+
+    /**
+     * Helper Method for PageRank that will create the Google Page Rank Matrix.
+     * The influence of each page is split evenly between the pages it links to. We should divide each row entry by the total column sum.
+     * If a node has no outgoing edges, there is an equal probability of going to any other edge then.
+     * To arrive at a unique solution we will do "M = 0.85 A + (0.15 / n) One"  --  One is a matrix of size n x n where every entry is 1.
+     * O(n ^ 2) Time.
+     */
+    Matrix createGoogleMatrix() const;
 
     void BetweennessCentrality() const;
 

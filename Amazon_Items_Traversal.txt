@@ -1,4 +1,4 @@
-Path Traversal:
+Path Traversal for 10000 nodes:
 0
 5
 10

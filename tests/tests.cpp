@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../catch/catch.hpp"
 #include "../src/graph.h"
+#include "../src/linear.hpp"
 #include "../src/node.h"
 
 using namespace std;
@@ -85,27 +86,82 @@ string readFile(string filename)
 TEST_CASE("DFS Traversal - Connected Directed Graph", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 7 nodes:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversals - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 7 nodes:\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Directed Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal:\n0\n4\n5\n1\n6\n3\n2\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 12 nodes:\n0\n4\n5\n1\n6\n3\n2\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
   remove("Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12, "Test");
   g.Traversal();
-  REQUIRE("Path Traversal:\n0\n4\n5\n2\n1\n6\n3\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
+  REQUIRE("Path Traversal for 12 nodes:\n0\n4\n5\n2\n1\n6\n3\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
+  remove("Test_Traversal.txt");
+}
+
+// Beginning of Testing Google Page Rank
+TEST_CASE("Google Page Rank Matrix", "[sprint=1]") {
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+
+  vector<vector<double>> expected {{0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.4464285714, 0.0214285714, 0.0214285714, 0.8714285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429 }, 
+                                   { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }};
+  vector<vector<double>> actual = g.createGoogleMatrix();
+
+  for (size_t i = 0; i < 7; i++) {
+    for (size_t j = 0; j < 7; j++) {
+      REQUIRE(expected[i][j] == Approx(actual[i][j]));
+    }
+  }
+  remove("Test_Traversal.txt");
+}
+
+TEST_CASE("Matrix Vector Multiplication", "[sprint=1]") {
+  vector<vector<double>> matrix { {1.0, 2, 1}, {1.0, 0, 0}, {3, 2.0, 2} };
+  vector<double> vec {1.0, 0.5, 1};
+  REQUIRE(vector<double>{3, 1, 6} == Linear::getMatrixVectorProduct(matrix, vec));
+}
+
+TEST_CASE("2-Norm of Vector", "[sprint=1]") {
+  vector<double> vec {1.0, 0.5, 2};
+  REQUIRE(5.25 == Linear::getNorm(vec));
+}
+
+// Test Page Rank Works Collectively
+TEST_CASE("Page Rank - Connected Graph", "[sprint=1]") {
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+  vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
+  vector<double> actual = g.PageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(actual[i]));
+  }
+  remove("Test_Traversal.txt");
+}
+
+TEST_CASE("Page Rank - Multiple Components Graph", "[sprint=1]") {
+  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+  vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
+  vector<double> actual = g.PageRank();
+
+  for (size_t i = 0; i < expected.size(); i++) {
+      REQUIRE(expected[i] == Approx(actual[i]));
+  }
   remove("Test_Traversal.txt");
 }
