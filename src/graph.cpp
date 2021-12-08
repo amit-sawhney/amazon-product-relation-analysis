@@ -86,7 +86,7 @@ Matrix Graph::createGoogleMatrix() const {
 
     vector<double> default_row;
     default_row.resize(num_nodes_, positiveAdjustment);
-    vector<vector<double>> matrix;
+    Matrix matrix;
     matrix.resize(num_nodes_, default_row);
 
     for (size_t c = 0; c < num_nodes_; c++) {
@@ -98,6 +98,29 @@ Matrix Graph::createGoogleMatrix() const {
             double influence = kDAMPENING / edges_[c].size();
             for (const auto &node : edges_[c]) {
                 matrix[node->getId()][c] += influence;
+            }
+        }
+    }
+    return matrix;
+}
+
+SparseMatrix Graph::createSparseGoogle() const {
+    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_;
+    double noLinksInfluence = (kDAMPENING / num_nodes_) + positiveAdjustment;
+
+    SparseMatrix matrix;
+    matrix.resize(num_nodes_, list<tuple<unsigned, double>>());
+
+    for (size_t c = 0; c < num_nodes_; c++) {
+        if (edges_[c].size() == 0) {
+            for (size_t r = 0; r < num_nodes_; r++) {
+                matrix[r].push_back(tuple<unsigned, double>(c, noLinksInfluence));
+            }
+        } 
+        else {
+            double influence = (kDAMPENING / edges_[c].size()) + positiveAdjustment;
+            for (const auto &node : edges_[c]) {
+                matrix[node->getId()].push_back(tuple<unsigned, double>(c, influence));
             }
         }
     }

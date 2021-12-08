@@ -10,12 +10,14 @@
 #include <sstream>
 #include <stack>
 #include <string>
+#include <tuple>
 #include <vector>
 
 using namespace std;
 
 typedef vector<list<Node*>> AdjList;
 typedef vector<vector<double>> Matrix;
+typedef vector<list<tuple<unsigned, double>>> SparseMatrix;
 
 class Graph
 {
@@ -49,6 +51,8 @@ public:
      * O(n ^ 2) Time.
      */
     Matrix createGoogleMatrix() const;
+
+    SparseMatrix createSparseGoogle() const;
 
     void BetweennessCentrality() const;
 

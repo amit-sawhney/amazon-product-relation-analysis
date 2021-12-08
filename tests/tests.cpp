@@ -122,11 +122,20 @@ TEST_CASE("Create Google Page Rank Matrix", "[sprint=1]") {
                                    { 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
                                    { 0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429 }, 
                                    { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }};
+  
+  // Testing Condensed Matrix
   vector<vector<double>> actual = g.createGoogleMatrix();
-
   for (size_t i = 0; i < 7; i++) {
     for (size_t j = 0; j < 7; j++) {
       REQUIRE(expected[i][j] == Approx(actual[i][j]));
+    }
+  }
+
+  // Testing Sparse Matrix
+  vector<list<tuple<unsigned, double>>> sparse = g.createSparseGoogle();
+  for (size_t i = 0; i < sparse.size(); i++) {
+    for (auto tup : sparse[i]) {
+      REQUIRE(expected[i][get<0>(tup)] == Approx(get<1>(tup)));
     }
   }
   remove("Test_Traversal.txt");
