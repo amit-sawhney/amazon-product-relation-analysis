@@ -1,4 +1,4 @@
-Path Traversal for 10000 nodes:
+Path Traversal for 10000 nodes with 1 Connected Component(s):
 0
 5
 10

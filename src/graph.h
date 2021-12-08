@@ -81,4 +81,10 @@ private:
      * @param filename is the file with all the edges.
      */
     void parseNodes(string filename);
+
+    /**
+     * Method that will save the probabilities of each Rank into a file.
+     * @param probabilities the importance score for each node.
+     */
+    void savePageRank(const vector<double> &probabilities) const;
 };
