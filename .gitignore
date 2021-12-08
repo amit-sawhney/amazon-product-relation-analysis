@@ -33,7 +33,7 @@
 
 # Data
 data/data.txt
-data/Amazon_Items_Traversal.txt
+Amazon_Items_Traversal.txt
 
 #Mac Thing
 .vscode/c_cpp_properties.json
