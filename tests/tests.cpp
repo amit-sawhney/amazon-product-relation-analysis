@@ -14,6 +14,12 @@ TEST_CASE("Parse Nodes - Connected Directed Graph", "[sprint=0]") {
   REQUIRE(adjacencyList == "|0| -> 1 -> 4\n|1| -> 3 -> 6\n|2| -> 0 -> 5\n|3| -> 1\n|4| -> 2 -> 5\n|5|\n|6|\n");
 }
 
+TEST_CASE("Parse Nodes - Don't Read Complete File", "[sprint=0]") {
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 4, "");
+  string adjacencyList = g.outputEdges();
+  REQUIRE(adjacencyList == "|0| -> 1\n|1| -> 3\n|2| -> 0\n|3| -> 1\n");
+}
+
 TEST_CASE("Parse Nodes - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "");
   string adjacencyList = g.outputEdges();

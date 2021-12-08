@@ -60,7 +60,7 @@ void Graph::parseNodes(string filename)
     ifstream data(filename);
     string edge;
 
-    int from, to;
+    unsigned from, to;
     if (data.is_open())
     {
         while (getline(data, edge))
@@ -72,7 +72,9 @@ void Graph::parseNodes(string filename)
                 edgeStream >> from;
                 edgeStream >> to;
 
-                edges_[from].push_back(&nodes_[to]);
+                if (from < num_nodes_ && to < num_nodes_) {
+                    edges_[from].push_back(&nodes_[to]);
+                }
             }
         }
     }
