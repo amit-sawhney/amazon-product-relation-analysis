@@ -7,53 +7,39 @@
 Graph::Graph()
 {
     num_nodes_ = 0;
+    name_ = "";
 }
 
-Graph::Graph(AdjList edges, vector<Node> nodes)
+Graph::Graph(AdjList edges, vector<Node> nodes, string name)
 {
     edges_ = edges;
     nodes_ = nodes;
     num_nodes_ = nodes_.size();
+    name_ = name;
 }
 
-Graph::Graph(string filename, size_t num_nodes)
+Graph::Graph(string filename, size_t num_nodes, string name)
 {
     // Make sure num_nodes isn't zero.
     num_nodes_ = num_nodes;
     createNodeList();
     parseNodes(filename);
+    name_ = name;
 }
 
-void Graph::DFS()
+void Graph::Traversal()
 {
-    vector<bool> visited;
-    visited.resize(num_nodes_, false);
+    DFS dfs(edges_, nodes_);
+    connected_components_ = dfs.getConnectedComponents();
 
-    connected_components_ = 0;
-    for (size_t i = 0; i < num_nodes_; i++) {
-        if(!visited[i]) {
-            DFSHelper(i, visited);
-            connected_components_++;
-        }
+    ofstream myfile;
+    myfile.open (name_ + "_Traversal.txt");
+    myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes:" << endl;
+
+    for (auto it = dfs.begin(); it != dfs.end(); ++it) {
+        myfile << (*it)->getId() << endl;
     }
-}
-
-void Graph::DFSHelper(int id, vector<bool> &visited) {
-    stack<int> futureVisits;
-    futureVisits.push(id);
-
-    while (!futureVisits.empty()) {
-        int top = futureVisits.top();
-        futureVisits.pop();    
-        visited[top] = true;
-
-        for (auto neighbor : edges_[top]) {
-            int neighborId = neighbor->getId();
-            if (!visited[neighborId]) {
-                futureVisits.push(neighborId);
-            }
-        }
-    }
+    myfile.close();
 }
 
 vector<double> Graph::PageRank() const
@@ -130,7 +116,7 @@ void Graph::parseNodes(string filename)
     ifstream data(filename);
     string edge;
 
-    int from, to;
+    unsigned from, to;
     if (data.is_open())
     {
         while (getline(data, edge))
@@ -142,7 +128,9 @@ void Graph::parseNodes(string filename)
                 edgeStream >> from;
                 edgeStream >> to;
 
-                edges_[from].push_back(&nodes_[to]);
+                if (from < num_nodes_ && to < num_nodes_) {
+                    edges_[from].push_back(&nodes_[to]);
+                }
             }
         }
     }

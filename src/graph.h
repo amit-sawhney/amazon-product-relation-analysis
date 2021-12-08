@@ -1,7 +1,8 @@
 #pragma once
 
-#include "linear.hpp"
+#include "dfs.h"
 #include "node.h"
+#include "linear.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -22,16 +23,16 @@ class Graph
 public:
     Graph();
 
-    Graph(AdjList edges, vector<Node> nodes);
+    Graph(AdjList edges, vector<Node> nodes, string name);
 
-    Graph(string filename, size_t num_nodes);
+    Graph(string filename, size_t num_nodes, string name);
 
     /**
      * Method that will run a DFS Traversal on the graph and count the number of connected components.
      * O(n + m) Time.
      * Possibly Output Path/Create Iterator.
      */
-    void DFS();
+    void Traversal();
 
     /**
      * Method that will run Google's Page Rank Algorithm on its own graph.
@@ -56,6 +57,7 @@ public:
      * O(m) Time.
      */
     string outputEdges() const;
+    string outputTraversalOrder() const;
 
     unsigned getConnectedComponents() const;
 
@@ -65,7 +67,8 @@ private:
 
     AdjList edges_;
     vector<Node> nodes_;
-
+    string name_;
+    
     /** 
      * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
      * O(n) Time.
@@ -78,10 +81,4 @@ private:
      * @param filename is the file with all the edges.
      */
     void parseNodes(string filename);
-
-    /**
-     * Helper Method for DFS Traversal that visits the neighboring edges of the specified id.
-     * O(n + m) Time.
-     */
-    void DFSHelper(int id, vector<bool> &visited);
 };

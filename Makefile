@@ -1,6 +1,6 @@
 EXENAME = main
-OBJS = main.o graph.o node.o
-TEST_OBJS = graph.o node.o tests.o
+OBJS = main.o graph.o node.o dfs.o
+TEST_OBJS = graph.o node.o tests.o dfs.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -33,7 +33,7 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: src/main.cpp src/graph.cpp src/graph.h
+main.o: src/main.cpp src/graph.cpp src/graph.h src/dfs.cpp src/dfs.h
 	$(CXX) $(CXXFLAGS) src/main.cpp
 
 graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
@@ -42,12 +42,14 @@ graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
 node.o: src/node.cpp src/node.h 
 	$(CXX) $(CXXFLAGS) src/node.cpp
 
+dfs.o: src/dfs.cpp src/dfs.h src/node.cpp src/node.h src/graph.cpp src/graph.h 
+	$(CXX) $(CXXFLAGS) src/dfs.cpp
+
 test: output_msg $(TEST_OBJS)
 	$(LD) $(TEST_OBJS) $(LDFLAGS) -o test
 
 tests.o: tests/tests.cpp catch/catch.hpp
 	$(CXX) $(CXXFLAGS) tests/tests.cpp
-
 
 clean:
 	-rm -f *.o $(EXENAME) test
