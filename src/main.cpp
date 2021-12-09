@@ -9,7 +9,7 @@ int main()
 {
     Graph g("data/data.txt", 10000, "Amazon_Items");
     g.Traversal();
-    g.PageRank();
+    g.SparsePageRank();
 
     return 0;
 }

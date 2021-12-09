@@ -10,12 +10,14 @@
 #include <sstream>
 #include <stack>
 #include <string>
+#include <tuple>
 #include <vector>
 
 using namespace std;
 
 typedef vector<list<Node*>> AdjList;
 typedef vector<vector<double>> Matrix;
+typedef vector<list<tuple<unsigned, double>>> SparseMatrix;
 
 class Graph
 {
@@ -42,6 +44,11 @@ public:
     vector<double> PageRank() const;
 
     /**
+     * Method for PageRank but uses a sparse matrix to save space and time.
+     */
+    vector<double> SparsePageRank() const;
+
+    /**
      * Helper Method for PageRank that will create the Google Page Rank Matrix.
      * The influence of each page is split evenly between the pages it links to. We should divide each row entry by the total column sum.
      * If a node has no outgoing edges, there is an equal probability of going to any other edge then.
@@ -49,6 +56,11 @@ public:
      * O(n ^ 2) Time.
      */
     Matrix createGoogleMatrix() const;
+
+    /** 
+     * Helper Method for PageRank but uses a sparse matrix to save space and time.
+     */
+    SparseMatrix createSparseGoogle() const;
 
     void BetweennessCentrality() const;
 
