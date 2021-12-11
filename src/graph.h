@@ -17,7 +17,7 @@
 
 using namespace std;
 
-typedef vector<list<Node*>> AdjList;
+typedef vector<list<Node *>> AdjList;
 typedef vector<vector<double>> Matrix;
 typedef vector<list<tuple<unsigned, double>>> SparseMatrix;
 
@@ -41,7 +41,7 @@ public:
     /**
      * Method that will run Google's Page Rank Algorithm on its own graph.
      * @return the probabilities of each of the nodes
-     * O(n ^ 2) Time. 
+     * O(n ^ 2) Time.
      */
     vector<double> PageRank() const;
 
@@ -59,15 +59,15 @@ public:
      */
     Matrix createGoogleMatrix() const;
 
-    /** 
+    /**
      * Helper Method for PageRank but uses a sparse matrix to save space and time.
      */
     SparseMatrix createSparseGoogle() const;
 
     void BetweennessCentrality() const;
 
-    /** 
-     * Method that will return a string of the adjacency list. 
+    /**
+     * Method that will return a string of the adjacency list.
      * O(m) Time.
      */
     string outputEdges() const;
@@ -82,9 +82,9 @@ private:
     AdjList edges_;
     vector<Node> nodes_;
     string name_;
-    
-    /** 
-     * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
+
+    /**
+     * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_.
      * O(n) Time.
      */
     void createNodeList();

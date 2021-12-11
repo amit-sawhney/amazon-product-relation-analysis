@@ -176,7 +176,7 @@ SparseMatrix Graph::createSparseGoogle() const
 
 void Graph::BetweennessCentrality() const
 {
-    Betweeness b(&nodes_, &edges_);
+    Betweenness b(&nodes_, &edges_);
     b.calculateBetweenness();
 }
 
