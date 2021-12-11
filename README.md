@@ -1,28 +1,28 @@
 <h1 align="center">
-  Amazing CS 225 Project Group Minus Amit
+  CS 225 Final Project
   </br>
 </h1>
 
 <table align="center">
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/daniel-moon1/"><img src="./photos/daniel-moon.jpg" width="75px;" alt="Daniel Moon"/><br /><b>Daniel Moon</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://www.linkedin.com/in/joseph-kuang-6bb55b1ba/"><img src="./photos/joseph-kuang.jpg" width="75px;" height="75px;" alt="Joseph Kuang"/><br /><b>Joseph Kuang</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://github.com/ajain1921"><img src="./photos/aditya-jain.jpg" width="75px;" alt="Aditya Jain"/><br /><b>Aditya Jain</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://www.linkedin.com/in/amit-m-sawhney/"><img src="./photos/amit-sawhney.jpg" width="75px;" height="75px;" alt="Amit Sawhney"/><br /><b>Amit Sawhney</b></a><br /><sub>Team Member</sub></td>
+    <td align="center"><a href="https://www.linkedin.com/in/daniel-moon1/"><img src="./photos/daniel-moon.jpg" width="75px;" alt="Daniel Moon"/><br /><b>Daniel Moon</b></a><br /></td>
+    <td align="center"><a href="https://www.linkedin.com/in/joseph-kuang-6bb55b1ba/"><img src="./photos/joseph-kuang.jpg" width="75px;" height="75px;" alt="Joseph Kuang"/><br /><b>Joseph Kuang</b></a><br /></td>
+    <td align="center"><a href="https://github.com/ajain1921"><img src="./photos/aditya-jain.jpg" width="75px;" alt="Aditya Jain"/><br /><b>Aditya Jain</b></a><br /></td>
+    <td align="center"><a href="https://www.linkedin.com/in/amit-m-sawhney/"><img src="./photos/amit-sawhney.jpg" width="75px;" height="75px;" alt="Amit Sawhney"/><br /><b>Amit Sawhney</b></a><br /></td>
     </tr>
 </table>
 
-<h4 align="center">Final project for CS 225</h4>
+<h4 align="center">Amazing CS 225 Project Group Minus Amit</h4>
 
 <p align="center">
-  <a href="#background">Background</a> •
-  <a href="#repository">Repository Breakdown</a> •
+  <a href="#background-and-leading-question">Background and Leading Question</a> •
+  <a href="#repository-breakdown">Repository Breakdown</a> •
   <a href="#technologies">Technologies</a> •
-  <a href="#running">Running</a> •
-  <a href="#tests">Tests</a>
+  <a href="#running-the-project">Running The Project</a> •
+  <a href="#test-suite">Test Suite</a>
 </p>
 
-## Background
+## Background and Leading Question
 
 In our project, we are hoping to find some pattern between buying habits and how Amazon presents items that are frequently bought together. Specifically, we would like to explore the extent of importance of certain items, to see which items Amazon recommends together and if we can find any vertices that act as "hubs" for many items, meaning that it is more popular and bought with more other items. The final deliverable should rank these items by the number of items that are recommended with these "hub" nodes which reveals how likely it is to get from one place to another just through frequently bought together items.
 
@@ -30,7 +30,7 @@ The difference in the output we get from Betweenness Centrality and PageRank is 
 
 [Full Proposal](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/blob/main/teamdocs/final_project_proposal.md)
 
-## Repository
+## Repository Breakdown
 
 - [Code](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/src)
 - [Data](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/data)
@@ -55,7 +55,7 @@ Due to the size the data, please download the Amazon [dataset](http://snap.stanf
     </tr>
 </table>
 
-## Running
+## Running the Project
 
 ### Prerequisites
 
@@ -97,4 +97,4 @@ make test [spring=0]
 make clean
 ```
 
-## Tests
+## Test Suite
