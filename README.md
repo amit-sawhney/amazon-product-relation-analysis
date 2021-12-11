@@ -10,7 +10,8 @@
   <a href="#repository">Repository Breakdown</a> •
   <a href="#technologies">Technologies</a> •
   <a href="#team">Team</a> •
-  <a href="#setup">Setup</a>
+  <a href="#setup">Setup</a> •
+  <a href="#tests">Tests</a>
 </p>
 
 ## Background
@@ -52,3 +53,5 @@ This application is built with C++, Catch, and compiled with Make.
 </table>
 
 ## Setup
+
+## Tests
