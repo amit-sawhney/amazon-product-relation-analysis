@@ -19,7 +19,7 @@ void Betweenness::accumulateNodes(Node *node)
         double coeff = (1 + delta[next_node]) / sigma_[next_node];
         for (auto vertex : predecessors_[next_node])
         {
-            delta[next_node] = delta[next_node] + sigma_[vertex] * coeff;
+            delta[vertex] = delta[vertex] + (sigma_[vertex] * coeff);
         }
 
         if (next_node != node)
@@ -67,7 +67,7 @@ void Betweenness::shortestPathCalculation(Node *node)
 
             if (dist[w] == distV + 1)
             {
-                sigma_[w] += sigmaV;
+                sigma_[w] = sigma_[w] + sigmaV;
                 predecessors_[w].push_back(v);
             }
         }
