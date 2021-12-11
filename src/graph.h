@@ -52,6 +52,8 @@ public:
      */
     string outputEdges() const;
 
+    AdjList getEdges() const;
+
     unsigned getConnectedComponents() const;
 
 private:

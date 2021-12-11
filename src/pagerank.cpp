@@ -105,14 +105,3 @@ SparseMatrix PageRank::createSparseGoogle() const {
     }
     return matrix;
 }
-
-// void PageRank::savePageRank(const vector<double> &probabilities) const {
-//     ofstream myfile;
-//     myfile.open ("deliverables/" + output_name_ + "_PageRank.txt");
-//     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
-
-//     for (unsigned i = 0; i < probabilities.size(); i++) {
-//         myfile << "Node " << to_string(i) << " -> " << probabilities[i] << endl;
-//     }
-//     myfile.close();
-// }

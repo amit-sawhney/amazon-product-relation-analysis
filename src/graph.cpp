@@ -102,6 +102,11 @@ void Graph::parseNodes(string filename)
     }
 }
 
+AdjList Graph::getEdges() const
+{
+    return edges_;
+}
+
 string Graph::outputEdges() const 
 {
     string output;

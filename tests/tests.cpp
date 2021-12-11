@@ -116,6 +116,7 @@ TEST_CASE("DFS Traversal - Multiple Components Undirected Graph", "[dfs]") {
 // Beginning of Testing Google Page Rank
 TEST_CASE("Create Google Page Rank Matrix", "[pagerank]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+  PageRank pg = PageRank(g.getEdges());
 
   vector<vector<double>> expected {{0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
                                    { 0.4464285714, 0.0214285714, 0.0214285714, 0.8714285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
@@ -126,7 +127,7 @@ TEST_CASE("Create Google Page Rank Matrix", "[pagerank]") {
                                    { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }};
   
   // Testing Condensed Matrix
-  vector<vector<double>> actual = g.createGoogleMatrix();
+  vector<vector<double>> actual = pg.createGoogleMatrix();
   for (size_t i = 0; i < 7; i++) {
     for (size_t j = 0; j < 7; j++) {
       REQUIRE(expected[i][j] == Approx(actual[i][j]));
@@ -134,7 +135,7 @@ TEST_CASE("Create Google Page Rank Matrix", "[pagerank]") {
   }
 
   // Testing Sparse Matrix
-  vector<list<tuple<unsigned, double>>> sparse = g.createSparseGoogle();
+  vector<list<tuple<unsigned, double>>> sparse = pg.createSparseGoogle();
   for (size_t i = 0; i < sparse.size(); i++) {
     for (auto tup : sparse[i]) {
       REQUIRE(expected[i][get<0>(tup)] == Approx(get<1>(tup)));
@@ -171,52 +172,32 @@ TEST_CASE("2-Norm of Vector", "[pagerank]") {
 }
 
 // Test Page Rank Works Collectively
-TEST_CASE("Page Rank - Connected Graph - Condensed", "[pagerank]") {
-  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
-  vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
-  vector<double> actual = g.PageRank();
-
-  for (size_t i = 0; i < expected.size(); i++) {
-      REQUIRE(expected[i] == Approx(actual[i]));
-  }
-
-  remove("deliverables/Test_Traversal.txt");
-  remove("deliverables/Test_PageRank.txt");
-}
-
 TEST_CASE("Page Rank - Connected Graph - Sparse", "[pagerank]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+  PageRank pg = PageRank(g.getEdges());
+
   vector<double> expected {0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
-  vector<double> sparse = g.SparsePageRank();
+  vector<double> probabilities = pg.createProbabilities();
 
   for (size_t i = 0; i < expected.size(); i++) {
-      REQUIRE(expected[i] == Approx(sparse[i]));
+      REQUIRE(expected[i] == Approx(probabilities[i]));
   }
 
-  remove("deliverables/Test_Traversal.txt");
-  remove("deliverables/Test_PageRank.txt");
-}
-
-TEST_CASE("Page Rank - Multiple Components Graph - Condensed", "[pagerank]") {
-  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
-  vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
-  vector<double> actual = g.PageRank();
-
-  for (size_t i = 0; i < expected.size(); i++) {
-      REQUIRE(expected[i] == Approx(actual[i]));
-  }
   remove("deliverables/Test_Traversal.txt");
   remove("deliverables/Test_PageRank.txt");
 }
 
 TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[pagerank]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+  PageRank pg = PageRank(g.getEdges());
+
   vector<double> expected {0.0557929519, 0.1503073339, 0.0391460521, 0.1031448773, 0.0628697171, 0.1092659075, 0.1031448773, 0.0391460521, 0.0724398517, 0.1007469124, 0.1248494149, 0.0391460521 };
-  vector<double> sparse = g.SparsePageRank();
+  vector<double> probabilities = pg.createProbabilities();
 
   for (size_t i = 0; i < expected.size(); i++) {
-      REQUIRE(expected[i] == Approx(sparse[i]));
+      REQUIRE(expected[i] == Approx(probabilities[i]));
   }
+  
   remove("deliverables/Test_Traversal.txt");
   remove("deliverables/Test_PageRank.txt");
 }
