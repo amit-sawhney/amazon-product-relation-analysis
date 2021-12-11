@@ -101,8 +101,6 @@ vector<double> Graph::SparsePageRank() const
     return probabilities;
 }
 
-// djfdls
-
 void Graph::savePageRank(const vector<double> &probabilities) const
 {
     ofstream myfile;
@@ -178,6 +176,8 @@ SparseMatrix Graph::createSparseGoogle() const
 
 void Graph::BetweennessCentrality() const
 {
+    Betweeness b(&nodes_, &edges_);
+    b.calculateBetweenness();
 }
 
 void Graph::createNodeList()

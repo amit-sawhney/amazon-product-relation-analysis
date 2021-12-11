@@ -1,6 +1,6 @@
 EXENAME = main
-OBJS = main.o graph.o node.o dfs.o
-TEST_OBJS = graph.o node.o tests.o dfs.o
+OBJS = main.o graph.o node.o dfs.o betweenness.o
+TEST_OBJS = graph.o node.o tests.o dfs.o betweenness.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -36,8 +36,11 @@ $(EXENAME): output_msg $(OBJS)
 main.o: src/main.cpp src/graph.cpp src/graph.h src/dfs.cpp src/dfs.h
 	$(CXX) $(CXXFLAGS) src/main.cpp
 
-graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h
+graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h src/betweenness.cpp src/betweenness.h src/dfs.cpp src/dfs.h
 	$(CXX) $(CXXFLAGS) src/graph.cpp
+
+betweenness.o: src/betweenness.cpp src/betweenness.h src/node.cpp src/node.h
+	$(CXX) $(CXXFLAGS) src/betweenness.cpp
 
 node.o: src/node.cpp src/node.h 
 	$(CXX) $(CXXFLAGS) src/node.cpp

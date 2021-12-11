@@ -3,6 +3,7 @@
 #include "dfs.h"
 #include "node.h"
 #include "linear.hpp"
+#include "betweenness.h"
 
 #include <fstream>
 #include <iostream>
@@ -12,6 +13,7 @@
 #include <string>
 #include <tuple>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
