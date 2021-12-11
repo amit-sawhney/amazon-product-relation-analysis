@@ -31,6 +31,7 @@ int main(int argc, char **argv) {
         Graph g(file, num_nodes, name);
         g.Traversal();
         g.SparsePageRank();
+
     } catch (exception& e) {
         cout << e.what() << endl;
         cout << "Pleas enter 1. Data File Path   2. Number of Nodes   3. Output File Name" << endl;

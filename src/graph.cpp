@@ -33,7 +33,7 @@ void Graph::Traversal()
     connected_components_ = dfs.getConnectedComponents();
 
     ofstream myfile;
-    myfile.open (name_ + "_Traversal.txt");
+    myfile.open ("deliverables/" + name_ + "_Traversal.txt");
     myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes with " 
             << to_string(connected_components_) << " Connected Component(s):" << endl;
 
@@ -98,7 +98,7 @@ vector<double> Graph::SparsePageRank() const
 
 void Graph::savePageRank(const vector<double> &probabilities) const {
     ofstream myfile;
-    myfile.open (name_ + "_PageRank.txt");
+    myfile.open ("deliverables/" + name_ + "_PageRank.txt");
     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
     for (unsigned i = 0; i < probabilities.size(); i++) {
