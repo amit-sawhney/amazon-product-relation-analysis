@@ -44,35 +44,35 @@ TEST_CASE("Parse Nodes - Multiple Components Undirected Graph", "[sprint=0]") {
 TEST_CASE("Number of Connected Components - Connected Directed Graph", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "");
   g.Traversal();
-  remove("_Traversal.txt");
+  remove("deliverables/_Traversal.txt");
   REQUIRE(1 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "");
   g.Traversal();
-  remove("_Traversal.txt");
+  remove("deliverables/_Traversal.txt");
   REQUIRE(1 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Multiple Components Directed Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "");
   g.Traversal();
-  remove("_Traversal.txt");
+  remove("deliverables/_Traversal.txt");
   REQUIRE(4 == g.getConnectedComponents());
 }
 
 TEST_CASE("Number of Connected Components - Multiple Components Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12, "");
   g.Traversal();
-  remove("_Traversal.txt");
+  remove("deliverables/_Traversal.txt");
   REQUIRE(3 == g.getConnectedComponents());
 }
 
 // Beginning of Comparing DFS Traversal Order
 string readFile(string filename)
 {
-    ifstream data(filename);
+    ifstream data("deliverables/" + filename);
     string line, output;
 
     if (data.is_open()) {
@@ -88,28 +88,28 @@ TEST_CASE("DFS Traversal - Connected Directed Graph", "[sprint=1]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   g.Traversal();
   REQUIRE("Path Traversal for 7 nodes with 1 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
-  remove("Test_Traversal.txt");
+  remove("deliverables/Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversals - Connected Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "Test");
   g.Traversal();
   REQUIRE("Path Traversal for 7 nodes with 1 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
-  remove("Test_Traversal.txt");
+  remove("deliverables/Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Directed Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
   g.Traversal();
   REQUIRE("Path Traversal for 12 nodes with 4 Connected Component(s):\n0\n4\n5\n1\n6\n3\n2\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
-  remove("Test_Traversal.txt");
+  remove("deliverables/Test_Traversal.txt");
 }
 
 TEST_CASE("DFS Traversal - Multiple Components Undirected Graph", "[sprint=0]") {
   Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12, "Test");
   g.Traversal();
   REQUIRE("Path Traversal for 12 nodes with 3 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n7\n8\n9\n10\n11\n" == readFile("Test_Traversal.txt"));
-  remove("Test_Traversal.txt");
+  remove("deliverables/Test_Traversal.txt");
 }
 
 // Beginning of Testing Google Page Rank
@@ -139,7 +139,7 @@ TEST_CASE("Create Google Page Rank Matrix", "[sprint=1]") {
       REQUIRE(expected[i][get<0>(tup)] == Approx(get<1>(tup)));
     }
   }
-  remove("Test_Traversal.txt");
+  remove("deliverables/Test_Traversal.txt");
 }
 
 TEST_CASE("Matrix Vector Multiplication", "[sprint=1]") {
@@ -179,8 +179,8 @@ TEST_CASE("Page Rank - Connected Graph - Condensed", "[sprint=1]") {
       REQUIRE(expected[i] == Approx(actual[i]));
   }
 
-  remove("Test_Traversal.txt");
-  remove("Test_PageRank.txt");
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_PageRank.txt");
 }
 
 TEST_CASE("Page Rank - Connected Graph - Sparse", "[sprint=1]") {
@@ -192,8 +192,8 @@ TEST_CASE("Page Rank - Connected Graph - Sparse", "[sprint=1]") {
       REQUIRE(expected[i] == Approx(sparse[i]));
   }
 
-  remove("Test_Traversal.txt");
-  remove("Test_PageRank.txt");
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_PageRank.txt");
 }
 
 TEST_CASE("Page Rank - Multiple Components Graph - Condensed", "[sprint=1]") {
@@ -204,8 +204,8 @@ TEST_CASE("Page Rank - Multiple Components Graph - Condensed", "[sprint=1]") {
   for (size_t i = 0; i < expected.size(); i++) {
       REQUIRE(expected[i] == Approx(actual[i]));
   }
-  remove("Test_Traversal.txt");
-  remove("Test_PageRank.txt");
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_PageRank.txt");
 }
 
 TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[sprint=1]") {
@@ -216,6 +216,6 @@ TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[sprint=1]") {
   for (size_t i = 0; i < expected.size(); i++) {
       REQUIRE(expected[i] == Approx(sparse[i]));
   }
-  remove("Test_Traversal.txt");
-  remove("Test_PageRank.txt");
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_PageRank.txt");
 }
