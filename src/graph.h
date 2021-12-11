@@ -5,6 +5,7 @@
 #include "pagerank.h"
 #include "linear.hpp"
 
+#include <algorithm>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -44,6 +45,8 @@ public:
      * O(n ^ 2) Time.
      */
     void RunPageRank();
+
+    static bool compareProbabilities(const Node node1, const Node node2);
 
     void BetweennessCentrality() const;
 

@@ -201,3 +201,17 @@ TEST_CASE("Page Rank - Multiple Components Graph", "[pagerank]") {
   remove("deliverables/Test_Traversal.txt");
   remove("deliverables/Test_PageRank.txt");
 }
+
+// TEST_CASE("Compare Node Probabilities", "[pagerank]") {
+//   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+
+//   Node node1 = Node(1);
+//   node1.setImportance(1.5);
+//   Node node2 = Node(2);
+//   node2.setImportance(0.5);
+
+//   REQUIRE(!g.compareProbabilities(node1, node2));
+  
+//   remove("deliverables/Test_Traversal.txt");
+//   remove("deliverables/Test_PageRank.txt");
+// }

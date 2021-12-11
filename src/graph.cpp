@@ -20,7 +20,6 @@ Graph::Graph(AdjList edges, vector<Node> nodes, string name)
 
 Graph::Graph(string filename, size_t num_nodes, string name)
 {
-    // Make sure num_nodes isn't zero.
     num_nodes_ = num_nodes;
     createNodeList();
     parseNodes(filename);
@@ -29,9 +28,11 @@ Graph::Graph(string filename, size_t num_nodes, string name)
 
 void Graph::Traversal()
 {
+    // Create DFS Traversal
     DFS dfs(edges_, nodes_);
     connected_components_ = dfs.getConnectedComponents();
 
+    // Output DFS Traversal to File
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_Traversal.txt");
     myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes with " 
@@ -45,18 +46,30 @@ void Graph::Traversal()
 
 void Graph::RunPageRank() 
 {
+    // Getting the Probabilities
     PageRank pagerank = PageRank(edges_);
     vector<double> probabilities = pagerank.createProbabilities();
+    for (unsigned i = 0; i < probabilities.size(); i++) {
+        nodes_[i].setImportance(probabilities[i]);
+    }
 
+    // Sorting the Probabilities
+    sort(nodes_.begin(), nodes_.end(), compareProbabilities);
+
+    // Saving Probabilities to File
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_PageRank.txt");
     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
     for (unsigned i = 0; i < probabilities.size(); i++) {
-        nodes_[i].setImportance(probabilities[i]);
-        myfile << "Node " << to_string(i) << " -> " << probabilities[i] << endl;
+        myfile << "Node " << to_string(nodes_[i].getId()) << " -> " << to_string(nodes_[i].getImportance()) << endl;
     }
     myfile.close();
+}
+
+bool Graph::compareProbabilities(const Node node1, const Node node2) 
+{
+    return (node1.getImportance() > node2.getImportance());
 }
 
 void Graph::BetweennessCentrality() const
@@ -73,23 +86,18 @@ void Graph::createNodeList()
 
 void Graph::parseNodes(string filename)
 {
-    edges_.resize(num_nodes_);
-
     ifstream data(filename);
-
-    // File does not exist
-    if(data.fail()){
+    if(data.fail()) {
         throw invalid_argument("The file does not exist");
     }
-    string edge;
 
+    edges_.resize(num_nodes_);
+    string edge;
     unsigned from, to;
-    if (data.is_open())
-    {
-        while (getline(data, edge))
-        {
-            if (edge[0] != '#') // Ignore Comments from input file
-            {
+
+    if (data.is_open()) {
+        while (getline(data, edge)) {
+            if (edge[0] != '#') { // Ignore Comments from input file
                 istringstream edgeStream;
                 edgeStream.str(edge);
                 edgeStream >> from;
