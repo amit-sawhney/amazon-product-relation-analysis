@@ -9,6 +9,7 @@
 #include <list>
 #include <sstream>
 #include <stack>
+#include <stdexcept>
 #include <string>
 #include <tuple>
 #include <vector>

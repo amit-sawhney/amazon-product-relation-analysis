@@ -171,6 +171,11 @@ void Graph::parseNodes(string filename)
     edges_.resize(num_nodes_);
 
     ifstream data(filename);
+
+    // File does not exist
+    if(data.fail()){
+        throw invalid_argument("The file does not exist");
+    }
     string edge;
 
     unsigned from, to;
