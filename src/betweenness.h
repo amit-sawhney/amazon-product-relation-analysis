@@ -1,7 +1,7 @@
-#include map
+#include <map>
 #include "node.h"
-#include stack
-#include list
+#include <stack>
+#include <list>
 using namespace std;
 
 typedef vector<list<Node*>> AdjList;
