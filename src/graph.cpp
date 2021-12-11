@@ -238,8 +238,3 @@ string Graph::outputEdges() const
     }
     return output;
 }
-
-unsigned Graph::getConnectedComponents() const
-{
-    return connected_components_;
-}
