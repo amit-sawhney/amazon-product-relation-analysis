@@ -5,6 +5,7 @@
 #include "../src/graph.h"
 #include "../src/linear.hpp"
 #include "../src/node.h"
+#include "../src/pagerank.h"
 
 using namespace std;
 typedef tuple<unsigned, double> entry;

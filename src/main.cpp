@@ -1,9 +1,10 @@
 #include <exception>
 #include <iostream>
 
+#include "dfs.h"
 #include "graph.h"
 #include "node.h"
-#include "dfs.h"
+#include "pagerank.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ int main(int argc, char **argv) {
         // Creating and Running Graph Algorithms
         Graph g(file, num_nodes, name);
         g.Traversal();
-        g.SparsePageRank();
+        g.RunPageRank();
 
     } catch (exception& e) {
         cout << e.what() << endl;
