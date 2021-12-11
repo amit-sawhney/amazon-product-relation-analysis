@@ -90,6 +90,7 @@ vector<double> Graph::SparsePageRank() const
         if (abs(norm - new_norm) < kTOLERANCE) {
             break;
         }
+        norm = new_norm;
     }
 
     savePageRank(probabilities);

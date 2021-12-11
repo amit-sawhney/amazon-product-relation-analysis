@@ -4,6 +4,7 @@
 #include "node.h"
 #include "linear.hpp"
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <list>
