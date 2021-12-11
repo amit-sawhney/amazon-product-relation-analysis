@@ -3,7 +3,7 @@
   </br>
 </h1>
 
-<h4 align="center">Final project for CS 225
+<h4 align="center">Final project for CS 225</h4>
 
 <p align="center">
   <a href="#background">Background</a> •
@@ -23,7 +23,18 @@ The difference in the output we get from Betweenness Centrality and PageRank is 
 
 ## Repository
 
+- [Code](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/src)
+- [Data](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/data)
+- [Tests](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/tests)
+- [Results](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/tree/main/results)
 
+### Configuring Data
+
+Due to the size the data, please download the Amazon [dataset](http://snap.stanford.edu/data/amazon0302.html) and follow the instructions below.
+
+1. Download the [dataset](http://snap.stanford.edu/data/amazon0302.html).
+2. Extract the data into a file called `data.txt`. 
+3. Drop the data into the `data/` directory.  
 
 ## Technologies
 
