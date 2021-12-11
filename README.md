@@ -72,11 +72,24 @@ make all
 make
 ```
 
-### Tests
+### Choosing Input File and Output Location
+- `make input_file output_directory`
+
+### Cleaning Directory
+
+```bash
+make clean
+```
+<br />
+<br />
+<h2 id="test-suite" align="center">Test Suite</h2>
+
+### Runnings Tests
 
 ```bash
 make test
 ```
+
 #### Argument Example
 ```bash
 make test [spring=0]
@@ -88,13 +101,100 @@ make test [spring=0]
 - `pagerank`
 - `betweencentrality`
 
-### Choosing Input File and Output Location
-- `make {input} {output}`
+### Graph Parsing
 
-### Cleaning Directory
+Ensured reliable graph parsing from input files by testing the following conditions:
+- Test connected directed graph
+- Test connected undirected graph
+- Test unconnected directed graph
+- Test connected directed graph
+- Edge cases
+  -  Test extraneous info at top of file is not read
 
-```bash
-make clean
-```
+### Number of Connected Components Calculated
+Ensured accurate connected component calculations by testing the following conditions:
+- Test connected directed graph
+- Test connected undirected graph
+- Test unconnected directed graph
+- Test unconnected undirected graph
 
-## Test Suite
+### DFS Traversal
+Ensured correct DFS traversals by testing the following conditions:
+- Test connected directed graph
+- Test connected undirected graph
+- Test unconnected directed graph
+- Test unconnected undirected graph
+
+### Page Rank Matrix
+- Validated Google Page Rank matrix creation by calculating the values of the matrix
+
+### Matrix-Vector Multiplication 
+- Validated Matrix-vector multiplication by calculating the values of the product
+
+### Matrix-Sparce Vector Multiplication
+Validated the values of Matrix-sparce vector calculations by testing the following conditions:
+- Test Sparce Product with zero as sprace values
+- Test Sparce Product with non-zero sparce values
+
+### Vector Normalization
+- Validated the norm of a vector by calculating the values of the normal vector
+
+### Page Rank
+Ensured accurate page rank calculations by testing the following conditions
+- Test condensed connected graph
+- Test sparce connected graph
+- Test condensed unconnected graph
+- Test sparce unconnected graph 
+
+### Betweenness Centrality
+
+_TODO_
+
+<details>
+  <summary>All tests</summary>
+  
+<code>Parse Nodes - Connected Directed Graph</code><br />
+<code>Parse Nodes - Connected Directed Graph</code><br />
+<code>Parse Nodes - Don't Read Complete File</code><br />
+<code>Parse Nodes - Don't Read Complete File</code><br />
+<code>Parse Nodes - Connected Undirected Graph</code><br />
+<code>Parse Nodes - Connected Undirected Graph</code><br />
+<code>Parse Nodes - Multiple Components Directed Graph</code><br />
+<code>Parse Nodes - Multiple Components Directed Graph</code><br />
+<code>Parse Nodes - Multiple Components Undirected Graph</code><br />
+<code>Parse Nodes - Multiple Components Undirected Graph</code><br />
+<code>Number of Connected Components - Connected Directed Graph</code><br />
+<code>Number of Connected Components - Connected Directed Graph</code><br />
+<code>Number of Connected Components - Connected Undirected Graph</code><br />
+<code>Number of Connected Components - Connected Undirected Graph</code><br />
+<code>Number of Connected Components - Multiple Components Directed Graph</code><br />
+<code>Number of Connected Components - Multiple Components Directed Graph</code><br />
+<code>Number of Connected Components - Multiple Components Undirected Graph</code><br />
+<code>Number of Connected Components - Multiple Components Undirected Graph</code><br />
+<code>DFS Traversal - Connected Directed Graph</code><br />
+<code>DFS Traversal - Connected Directed Graph</code><br />
+<code>DFS Traversals - Connected Undirected Graph</code><br />
+<code>DFS Traversals - Connected Undirected Graph</code><br />
+<code>DFS Traversal - Multiple Components Directed Graph</code><br />
+<code>DFS Traversal - Multiple Components Directed Graph</code><br />
+<code>DFS Traversal - Multiple Components Undirected Graph</code><br />
+<code>DFS Traversal - Multiple Components Undirected Graph</code><br />
+<code>Create Google Page Rank Matrix</code><br />
+<code>Create Google Page Rank Matrix</code><br />
+<code>Matrix Vector Multiplication</code><br />
+<code>Matrix Vector Multiplication</code><br />
+<code>Sparse Matrix Vector Multiplication</code><br />
+<code>Sparse Matrix Vector Multiplication</code><br />
+<code>Sparse Matrix Vector Multiplication with NonZero Sparse Values</code><br />
+<code>Sparse Matrix Vector Multiplication with NonZero Sparse Values</code><br />
+<code>2-Norm of Vector</code><br />
+<code>2-Norm of Vector</code><br />
+<code>Page Rank - Connected Graph - Condensed</code><br />
+<code>Page Rank - Connected Graph - Condensed</code><br />
+<code>Page Rank - Connected Graph - Sparse</code><br />
+<code>Page Rank - Connected Graph - Sparse</code><br />
+<code>Page Rank - Multiple Components Graph - Condensed</code><br />
+<code>Page Rank - Multiple Components Graph - Condensed</code><br />
+<code>Page Rank - Multiple Components Graph - Sparse</code><br />
+<code>Page Rank - Multiple Components Graph - Sparse</code><br />
+</details>
