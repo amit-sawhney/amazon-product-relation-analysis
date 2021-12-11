@@ -9,30 +9,6 @@ PageRank::PageRank(AdjList edges) {
     num_nodes_ = edges_.size();
 }
 
-vector<double> PageRank::createProbabilities() const {
-    // Step 1 Create Matrix
-    Matrix matrix = createGoogleMatrix();
-
-    // Step 2 Choose Random Markov Start Vector (Possibly just 1/N)
-    vector<double> probabilities;
-    probabilities.resize(num_nodes_, 1.0 / num_nodes_);
-
-    // Step 3 Find 1st Probabilities (Matrix Vector Multiplication)
-    probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
-    double norm = Linear::getNorm(probabilities);
-
-    // Step 4 Repeat Step 3 until at steady state vector (When Norm of Vector is Below a Certain Point)
-    for (size_t i = 1; i < KMAXITERATIONS; i++) {
-        probabilities = Linear::getMatrixVectorProduct(matrix, probabilities);
-        double new_norm = Linear::getNorm(probabilities);
-        if (abs(norm - new_norm) < kTOLERANCE) {
-            break;
-        }
-    }
-
-    return probabilities;
-}
-
 Matrix PageRank::createGoogleMatrix() const {
     double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_;
     double noLinksInfluence = kDAMPENING / num_nodes_;
@@ -57,7 +33,7 @@ Matrix PageRank::createGoogleMatrix() const {
     return matrix;
 }
 
-vector<double> PageRank::createSparseProbabilities() const {
+vector<double> PageRank::createProbabilities() const {
     // Step 1 Create Matrix
     SparseMatrix s_matrix = createSparseGoogle();
 

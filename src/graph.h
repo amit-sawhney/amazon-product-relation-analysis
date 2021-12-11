@@ -41,8 +41,9 @@ public:
 
     /**
      * Method that will run Google's Page Rank Algorithm on its own graph, saving it to a deliverable.
+     * O(n ^ 2) Time.
      */
-    void RunPageRank() const;
+    void RunPageRank();
 
     void BetweennessCentrality() const;
 

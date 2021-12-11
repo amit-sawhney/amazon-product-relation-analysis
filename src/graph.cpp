@@ -43,16 +43,17 @@ void Graph::Traversal()
     myfile.close();
 }
 
-void Graph::RunPageRank() const 
+void Graph::RunPageRank() 
 {
     PageRank pagerank = PageRank(edges_);
-    vector<double> probabilities = pagerank.createSparseProbabilities();
+    vector<double> probabilities = pagerank.createProbabilities();
 
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_PageRank.txt");
     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
     for (unsigned i = 0; i < probabilities.size(); i++) {
+        nodes_[i].setImportance(probabilities[i]);
         myfile << "Node " << to_string(i) << " -> " << probabilities[i] << endl;
     }
     myfile.close();

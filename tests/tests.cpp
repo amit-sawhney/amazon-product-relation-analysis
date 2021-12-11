@@ -172,7 +172,7 @@ TEST_CASE("2-Norm of Vector", "[pagerank]") {
 }
 
 // Test Page Rank Works Collectively
-TEST_CASE("Page Rank - Connected Graph - Sparse", "[pagerank]") {
+TEST_CASE("Page Rank - Connected Graph", "[pagerank]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   PageRank pg = PageRank(g.getEdges());
 
@@ -187,7 +187,7 @@ TEST_CASE("Page Rank - Connected Graph - Sparse", "[pagerank]") {
   remove("deliverables/Test_PageRank.txt");
 }
 
-TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[pagerank]") {
+TEST_CASE("Page Rank - Multiple Components Graph", "[pagerank]") {
   Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
   PageRank pg = PageRank(g.getEdges());
 
@@ -197,7 +197,7 @@ TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[pagerank]") {
   for (size_t i = 0; i < expected.size(); i++) {
       REQUIRE(expected[i] == Approx(probabilities[i]));
   }
-  
+
   remove("deliverables/Test_Traversal.txt");
   remove("deliverables/Test_PageRank.txt");
 }
