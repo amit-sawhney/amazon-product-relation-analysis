@@ -18,7 +18,7 @@
   <a href="#background">Background</a> •
   <a href="#repository">Repository Breakdown</a> •
   <a href="#technologies">Technologies</a> •
-  <a href="#setup">Setup</a> •
+  <a href="#running">Running</a> •
   <a href="#tests">Tests</a>
 </p>
 
@@ -55,6 +55,46 @@ Due to the size the data, please download the Amazon [dataset](http://snap.stanf
     </tr>
 </table>
 
-## Setup
+## Running
+
+### Prerequisites
+
+- Please make sure you have configured the data as mentioned above if you would like to run main code.
+- Ensure that you are in the [root](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2) directory. 
+
+### Main 
+
+```bash
+make all
+```
+
+```bash
+make
+```
+
+### Tests
+
+```bash
+make test
+```
+#### Argument Example
+```bash
+make test [spring=0]
+```
+#### Available Arguments
+- `spring=0`
+- `spring=1`
+- `dfs`
+- `pagerank`
+- `betweencentrality`
+
+### Choosing Input File and Output Location
+- `make {input} {output}`
+
+### Cleaning Directory
+
+```bash
+make clean
+```
 
 ## Tests
