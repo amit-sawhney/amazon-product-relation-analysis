@@ -3,13 +3,21 @@
   </br>
 </h1>
 
+<table align="center">
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/daniel-moon1/"><img src="./photos/daniel-moon.jpg" width="75px;" alt="Daniel Moon"/><br /><b>Daniel Moon</b></a><br /><sub>Team Member</sub></td>
+    <td align="center"><a href="https://www.linkedin.com/in/joseph-kuang-6bb55b1ba/"><img src="./photos/joseph-kuang.jpg" width="75px;" height="75px;" alt="Joseph Kuang"/><br /><b>Joseph Kuang</b></a><br /><sub>Team Member</sub></td>
+    <td align="center"><a href="https://github.com/ajain1921"><img src="./photos/aditya-jain.jpg" width="75px;" alt="Aditya Jain"/><br /><b>Aditya Jain</b></a><br /><sub>Team Member</sub></td>
+    <td align="center"><a href="https://www.linkedin.com/in/amit-m-sawhney/"><img src="./photos/amit-sawhney.jpg" width="75px;" height="75px;" alt="Amit Sawhney"/><br /><b>Amit Sawhney</b></a><br /><sub>Team Member</sub></td>
+    </tr>
+</table>
+
 <h4 align="center">Final project for CS 225</h4>
 
 <p align="center">
   <a href="#background">Background</a> •
   <a href="#repository">Repository Breakdown</a> •
   <a href="#technologies">Technologies</a> •
-  <a href="#team">Team</a> •
   <a href="#setup">Setup</a> •
   <a href="#tests">Tests</a>
 </p>
@@ -39,16 +47,11 @@ Due to the size the data, please download the Amazon [dataset](http://snap.stanf
 
 ## Technologies
 
-This application is built with C++, Catch, and compiled with Make. 
-
-## Team
-
 <table align="center">
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/daniel-moon1/"><img src="./photos/daniel-moon.jpg" width="75px;" alt="Daniel Moon"/><br /><b>Daniel Moon</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://www.linkedin.com/in/joseph-kuang-6bb55b1ba/"><img src="./photos/joseph-kuang.jpg" width="75px;" height="75px;" alt="Joseph Kuang"/><br /><b>Joseph Kuang</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://github.com/ajain1921"><img src="./photos/aditya-jain.jpg" width="75px;" alt="Aditya Jain"/><br /><b>Aditya Jain</b></a><br /><sub>Team Member</sub></td>
-    <td align="center"><a href="https://www.linkedin.com/in/amit-m-sawhney/"><img src="./photos/amit-sawhney.jpg" width="75px;" height="75px;" alt="Amit Sawhney"/><br /><b>Amit Sawhney</b></a><br /><sub>Team Member</sub></td>
+    <td align="center"><a href="https://en.cppreference.com/w/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" width="75px;" alt="C++"/><br /><b>C++</b></a></td>
+    <td align="center"><a href="https://www.gnu.org/software/make/manual/make.html"><img src="https://www.iconattitude.com/icons/open_icon_library/crystal-style/png/256/text-x-makefile.png" width="75px;" height="85px;" alt="Makefile"/><br /><b>Makefile</b></a></td>
+    <td align="center"><a href="https://github.com/catchorg/Catch2"><img src="https://raw.githubusercontent.com/catchorg/Catch2/devel/data/artwork/catch2-logo-small.png?sanitize=false" width="150px;" height="85px" alt="Catch2"/><br /><b>Catch2</b></a></td>
     </tr>
 </table>
 
