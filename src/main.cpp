@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
         stringstream string_nodes(argv[2]);
         int num_nodes = 0;
         string_nodes >> num_nodes;
-        if (num_nodes < 0) {
+        if (num_nodes <= 0) {
             throw invalid_argument("There was an invalid number of nodes entered.");
         }
 
