@@ -52,8 +52,8 @@ string readFile(string filename)
         {
           output += line + "\n";
         }
-    }
-    return output;
+    } 
+  return output;
 }
 
 TEST_CASE("DFS Traversal - Connected Directed Graph", "[dfs]") {
@@ -89,14 +89,14 @@ TEST_CASE("Create Google Page Rank Matrix", "[pagerank]") {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   PageRank pg = PageRank(g.getEdges());
 
-  vector<vector<double>> expected {{0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.4464285714, 0.0214285714, 0.0214285714, 0.8714285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429 }, 
-                                   { 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429 }};
-  
+  vector<vector<double>> expected{{0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429},
+                                  {0.4464285714, 0.0214285714, 0.0214285714, 0.8714285714, 0.0214285714, 0.1428571429, 0.1428571429},
+                                  {0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429},
+                                  {0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429},
+                                  {0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429},
+                                  {0.0214285714, 0.0214285714, 0.4464285714, 0.0214285714, 0.4464285714, 0.1428571429, 0.1428571429},
+                                  {0.0214285714, 0.4464285714, 0.0214285714, 0.0214285714, 0.0214285714, 0.1428571429, 0.1428571429}};
+
   // Testing Condensed Matrix
   vector<vector<double>> actual = pg.createGoogleMatrix();
   for (size_t i = 0; i < 7; i++) {
@@ -171,4 +171,25 @@ TEST_CASE("Page Rank - Multiple Components Graph", "[pagerank]") {
 
   remove("deliverables/Test_Traversal.txt");
   remove("deliverables/Test_PageRank.txt");
+}
+
+// Beginning of Betweenness Centrality
+TEST_CASE("Betweenness Centrality - Directed One Component", "[betweenness]")
+{
+  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
+  vector<double> expected({7.0, 7.0, 4.0, 0.0, 2.0, 0.0, 0.0});
+  auto output = g.BetweennessCentrality();
+  for (auto num : output) {
+    REQUIRE(expected[num.first -> getId()] == num.second);
+  }
+}
+
+TEST_CASE("Betweenness Centrality - Directed Multiple Components Graph", "[betweenness]")
+{
+  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+  vector<double> expected({4, 5, 0, 0, 1, 0, 0, 2, 2, 2, 0, 0});
+  auto output = g.BetweennessCentrality();
+  for (auto num : output) {
+    REQUIRE(expected[num.first -> getId()] == num.second);
+  }
 }

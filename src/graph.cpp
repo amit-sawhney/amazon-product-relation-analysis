@@ -37,8 +37,8 @@ void Graph::Traversal()
     myfile.open ("deliverables/" + name_ + "_Traversal.txt");
     myfile << "Path Traversal for " << to_string(num_nodes_) << " nodes with " 
             << to_string(connected_components_) << " Connected Component(s):" << endl;
-
-    for (auto it = dfs.begin(); it != dfs.end(); ++it) {
+    for (auto it = dfs.begin(); it != dfs.end(); ++it)
+    {
         myfile << (*it)->getId() << endl;
     }
     myfile.close();
@@ -67,19 +67,24 @@ void Graph::RunPageRank()
     myfile.close();
 }
 
+
 bool Graph::compareProbabilities(const Node node1, const Node node2) 
 {
     return (node1.getImportance() > node2.getImportance());
 }
 
-void Graph::BetweennessCentrality() const
+map<Node *, double> Graph::BetweennessCentrality() const
 {
+    Betweenness b(nodes_, edges_);
+    map<Node *, double> betweenness = b.calculateBetweenness();
+    return betweenness;
 }
 
-void Graph::createNodeList() 
+void Graph::createNodeList()
 {
     nodes_.resize(num_nodes_, NULL);
-    for (size_t i = 0; i < num_nodes_; i++) {
+    for (size_t i = 0; i < num_nodes_; i++)
+    {
         nodes_[i] = Node(i);
     }
 }
@@ -105,13 +110,15 @@ void Graph::parseNodes(string filename)
                 edgeStream >> from;
                 edgeStream >> to;
 
-                if (from < num_nodes_ && to < num_nodes_) {
+                if (from < num_nodes_ && to < num_nodes_)
+                {
                     edges_[from].push_back(&nodes_[to]);
                 }
             }
         }
     }
 }
+
 
 AdjList Graph::getEdges() const
 {
@@ -121,9 +128,11 @@ AdjList Graph::getEdges() const
 string Graph::outputEdges() const 
 {
     string output;
-    for (size_t i = 0; i < num_nodes_; i++) {
+    for (size_t i = 0; i < num_nodes_; i++)
+    {
         output += '|' + to_string(i) + '|';
-        for (auto node : edges_[i]) {
+        for (auto node : edges_[i])
+        {
             output += " -> " + to_string(node->getId());
         }
         output += '\n';

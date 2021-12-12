@@ -4,6 +4,7 @@
 #include "node.h"
 #include "pagerank.h"
 #include "linear.hpp"
+#include "betweenness.h"
 
 #include <algorithm>
 #include <cmath>
@@ -16,10 +17,11 @@
 #include <string>
 #include <tuple>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
-typedef vector<list<Node*>> AdjList;
+typedef vector<list<Node *>> AdjList;
 typedef vector<vector<double>> Matrix;
 typedef vector<list<tuple<unsigned, double>>> SparseMatrix;
 
@@ -48,10 +50,10 @@ public:
 
     static bool compareProbabilities(const Node node1, const Node node2);
 
-    void BetweennessCentrality() const;
+    map<Node*, double> BetweennessCentrality() const;
 
-    /** 
-     * Method that will return a string of the adjacency list. 
+    /**
+     * Method that will return a string of the adjacency list.
      * O(m) Time.
      */
     string outputEdges() const;
@@ -65,9 +67,9 @@ private:
     AdjList edges_;
     vector<Node> nodes_;
     string name_;
-    
-    /** 
-     * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_. 
+
+    /**
+     * Helper Method that creates a node for every vertex in the graph, and puts the node into the vector nodes_.
      * O(n) Time.
      */
     void createNodeList();
