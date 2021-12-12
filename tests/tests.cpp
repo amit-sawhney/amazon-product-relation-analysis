@@ -173,6 +173,7 @@ TEST_CASE("Page Rank - Multiple Components Graph", "[pagerank]") {
   remove("deliverables/Test_PageRank.txt");
 }
 
+// Beginning of Betweenness Centrality
 TEST_CASE("Betweenness Centrality - Directed One Component", "[betweenness]")
 {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
@@ -191,5 +192,4 @@ TEST_CASE("Betweenness Centrality - Directed Multiple Components Graph", "[betwe
   for (auto num : output) {
     REQUIRE(expected[num.first -> getId()] == num.second);
   }
-
 }
