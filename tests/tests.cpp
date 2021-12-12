@@ -218,7 +218,7 @@ TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[sprint=1]")
   remove("Test_PageRank.txt");
 }
 
-TEST_CASE("Betweenness Centrality", "[betweenness]")
+TEST_CASE("Betweenness Centrality - Directed One Component", "[betweenness]")
 {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   vector<double> expected({7.0, 7.0, 4.0, 0.0, 2.0, 0.0, 0.0});
@@ -226,4 +226,15 @@ TEST_CASE("Betweenness Centrality", "[betweenness]")
   for (auto num : output) {
     REQUIRE(expected[num.first -> getId()] == num.second);
   }
+}
+
+TEST_CASE("Betweenness Centrality - Directed Multiple Components Graph", "[betweenness]")
+{
+  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "Test");
+  vector<double> expected({4, 5, 0, 1, 0, 0, 2, 2, 0, 0, 0, 0});
+  auto output = g.BetweennessCentrality();
+  for (auto num : output) {
+    REQUIRE(expected[num.first -> getId()] == num.second);
+  }
+
 }
