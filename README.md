@@ -138,8 +138,8 @@ Ensured accurate page rank calculations by testing the following conditions
 - Test sparce unconnected graph 
 
 ### Betweenness Centrality
-
-_TODO_
+- Test connected directed graph
+- Test unconnected directed graph
 
 <details>
   <summary>All tests</summary>
@@ -188,4 +188,6 @@ _TODO_
 <code>Page Rank - Multiple Components Graph - Condensed</code><br />
 <code>Page Rank - Multiple Components Graph - Sparse</code><br />
 <code>Page Rank - Multiple Components Graph - Sparse</code><br />
+<code>Betweenness Centrality - Directed One Component </code> <br/>
+<code>Betweenness Centrality - Directed Multiple Components Graph </code> <br/>
 </details>
