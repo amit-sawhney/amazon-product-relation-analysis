@@ -64,7 +64,7 @@ public:
      */
     SparseMatrix createSparseGoogle() const;
 
-    void BetweennessCentrality() const;
+    map<Node*, double> BetweennessCentrality() const;
 
     /**
      * Method that will return a string of the adjacency list.

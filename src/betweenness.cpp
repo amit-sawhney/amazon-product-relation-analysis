@@ -24,6 +24,8 @@ void Betweenness::accumulateNodes(Node *node)
             betweenness_values_[next_node] = betweenness_values_[next_node] + delta[next_node];
         }
     }
+}
+
 void Betweenness::shortestPathCalculation(Node *node)
 {
     predecessors_.clear();
@@ -63,7 +65,6 @@ void Betweenness::shortestPathCalculation(Node *node)
 }
 map<Node *, double> Betweenness::calculateBetweenness()
 {
-    int i = 0;
     for (auto node : nodes_)
     {
         shortestPathCalculation(&node);

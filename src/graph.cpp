@@ -174,16 +174,11 @@ SparseMatrix Graph::createSparseGoogle() const
     return matrix;
 }
 
-void Graph::BetweennessCentrality() const
+map<Node *, double> Graph::BetweennessCentrality() const
 {
     Betweenness b(nodes_, edges_);
     map<Node *, double> betweenness = b.calculateBetweenness();
-
-    for (auto x : betweenness)
-    {
-        cout << (x.first)->getId() << ": " << x.second << endl;
-    }
-
+    return betweenness;
 }
 
 void Graph::createNodeList()
