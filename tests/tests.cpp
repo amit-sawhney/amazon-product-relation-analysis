@@ -63,7 +63,7 @@ TEST_CASE("DFS Traversal - Connected Directed Graph", "[dfs]") {
   remove("deliverables/Test_Traversal.txt");
 }
 
-TEST_CASE("DFS Traversals - Connected Undirected Graph", "[dfs]") {
+TEST_CASE("DFS Traversal - Connected Undirected Graph", "[dfs]") {
   Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "Test");
   g.Traversal();
   REQUIRE("Path Traversal for 7 nodes with 1 Connected Component(s):\n0\n4\n5\n2\n1\n6\n3\n" == readFile("Test_Traversal.txt"));
