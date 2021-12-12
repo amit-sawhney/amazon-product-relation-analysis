@@ -8,7 +8,7 @@ class Node {
         void setImportance(double importance);
 
         int getId() const;
-        int getImportance() const;
+        double getImportance() const;
 
     private:
         int id_;

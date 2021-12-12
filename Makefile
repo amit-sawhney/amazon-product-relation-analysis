@@ -1,6 +1,6 @@
 EXENAME = main
-OBJS = main.o graph.o node.o dfs.o betweenness.o
-TEST_OBJS = graph.o node.o tests.o dfs.o betweenness.o
+OBJS = main.o graph.o node.o dfs.o pagerank.o betweenness.o
+TEST_OBJS = graph.o node.o tests.o dfs.o pagerank.o betweenness.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -33,7 +33,7 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: src/main.cpp src/graph.cpp src/graph.h src/dfs.cpp src/dfs.h
+main.o: src/main.cpp src/graph.cpp src/graph.h src/dfs.cpp src/dfs.h src/pagerank.cpp src/pagerank.h
 	$(CXX) $(CXXFLAGS) src/main.cpp
 
 graph.o: src/graph.cpp src/graph.h src/node.cpp src/node.h src/betweenness.cpp src/betweenness.h src/dfs.cpp src/dfs.h
@@ -47,6 +47,9 @@ node.o: src/node.cpp src/node.h
 
 dfs.o: src/dfs.cpp src/dfs.h src/node.cpp src/node.h src/graph.cpp src/graph.h 
 	$(CXX) $(CXXFLAGS) src/dfs.cpp
+
+pagerank.o: src/pagerank.cpp src/pagerank.h src/node.cpp src/node.h src/graph.cpp src/graph.h 
+	$(CXX) $(CXXFLAGS) src/pagerank.cpp
 
 test: output_msg $(TEST_OBJS)
 	$(LD) $(TEST_OBJS) $(LDFLAGS) -o test

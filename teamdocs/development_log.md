@@ -12,3 +12,18 @@ Lastly, we were wondering if maybe we should be tracking strongly connected comp
 However, we found that we run out of memory for the actual graph, since our google page rank matrix is too big as it is 'n ^ 2' size. 
 To fix this, we will probably have to use a sparse matrix so the size complexity will be closer to 'n' size.
   - We wrote the corresponding test cases for every part of the project that we have so far implemented.
+
+## Week 2 
+###### (We accidentally decided to make a new file for each log entry, so this week's progress was transferred from a file that was created a week ago).
+### Progress so far:
+  - Finished iterator for DFS along with print out traversal
+  - Started implementing Floyd-Warshall for Betweenness Centrality
+  - Working to fix PageRank
+  - Writing more tests
+ 
+ ### This following week we will:
+  - Finish PageRank
+  - Finish Betweenness centrality
+  - Finish Tests
+  - Finish documentation
+  

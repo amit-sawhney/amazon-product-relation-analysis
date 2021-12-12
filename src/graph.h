@@ -2,14 +2,18 @@
 
 #include "dfs.h"
 #include "node.h"
+#include "pagerank.h"
 #include "linear.hpp"
 #include "betweenness.h"
 
+#include <algorithm>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <list>
 #include <sstream>
 #include <stack>
+#include <stdexcept>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -39,30 +43,12 @@ public:
     void Traversal();
 
     /**
-     * Method that will run Google's Page Rank Algorithm on its own graph.
-     * @return the probabilities of each of the nodes
+     * Method that will run Google's Page Rank Algorithm on its own graph, saving it to a deliverable.
      * O(n ^ 2) Time.
      */
-    vector<double> PageRank() const;
+    void RunPageRank();
 
-    /**
-     * Method for PageRank but uses a sparse matrix to save space and time.
-     */
-    vector<double> SparsePageRank() const;
-
-    /**
-     * Helper Method for PageRank that will create the Google Page Rank Matrix.
-     * The influence of each page is split evenly between the pages it links to. We should divide each row entry by the total column sum.
-     * If a node has no outgoing edges, there is an equal probability of going to any other edge then.
-     * To arrive at a unique solution we will do "M = 0.85 A + (0.15 / n) One"  --  One is a matrix of size n x n where every entry is 1.
-     * O(n ^ 2) Time.
-     */
-    Matrix createGoogleMatrix() const;
-
-    /**
-     * Helper Method for PageRank but uses a sparse matrix to save space and time.
-     */
-    SparseMatrix createSparseGoogle() const;
+    static bool compareProbabilities(const Node node1, const Node node2);
 
     map<Node*, double> BetweennessCentrality() const;
 
@@ -71,9 +57,8 @@ public:
      * O(m) Time.
      */
     string outputEdges() const;
-    string outputTraversalOrder() const;
 
-    unsigned getConnectedComponents() const;
+    AdjList getEdges() const;
 
 private:
     unsigned num_nodes_;
@@ -95,10 +80,4 @@ private:
      * @param filename is the file with all the edges.
      */
     void parseNodes(string filename);
-
-    /**
-     * Method that will save the probabilities of each Rank into a file.
-     * @param probabilities the importance score for each node.
-     */
-    void savePageRank(const vector<double> &probabilities) const;
 };

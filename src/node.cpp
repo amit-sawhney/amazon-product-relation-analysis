@@ -1,4 +1,5 @@
 #include "node.h"
+#include <iostream>
 
 Node::Node(int id) {
     id_ = id;
@@ -13,6 +14,6 @@ int Node::getId() const {
     return id_;
 }
 
-int Node::getImportance() const {
+double Node::getImportance() const {
     return importance_;
 }
