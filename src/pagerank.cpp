@@ -9,30 +9,6 @@ PageRank::PageRank(AdjList edges) {
     num_nodes_ = edges_.size();
 }
 
-Matrix PageRank::createGoogleMatrix() const {
-    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_;
-    double noLinksInfluence = kDAMPENING / num_nodes_;
-
-    vector<double> default_row;
-    default_row.resize(num_nodes_, positiveAdjustment);
-    Matrix matrix;
-    matrix.resize(num_nodes_, default_row);
-
-    for (size_t c = 0; c < num_nodes_; c++) {
-        if (edges_[c].size() == 0) {
-            for (size_t r = 0; r < num_nodes_; r++) {
-                matrix[r][c] += noLinksInfluence;
-            }
-        } else {
-            double influence = kDAMPENING / edges_[c].size();
-            for (const auto &node : edges_[c]) {
-                matrix[node->getId()][c] += influence;
-            }
-        }
-    }
-    return matrix;
-}
-
 vector<double> PageRank::createProbabilities() const {
     // Step 1 Create Matrix
     SparseMatrix s_matrix = createSparseGoogle();
@@ -59,20 +35,48 @@ vector<double> PageRank::createProbabilities() const {
     return probabilities;
 }
 
+Matrix PageRank::createGoogleMatrix() const {
+    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_; // Default Amount Added to Every Entry
+    double noLinksInfluence = kDAMPENING / num_nodes_;
+
+    vector<double> default_row;
+    default_row.resize(num_nodes_, positiveAdjustment);
+    Matrix matrix;
+    matrix.resize(num_nodes_, default_row);
+
+    for (size_t c = 0; c < num_nodes_; c++) {
+        // Making entire column equal if no outgoing edges.
+        if (edges_[c].size() == 0) {
+            for (size_t r = 0; r < num_nodes_; r++) {
+                matrix[r][c] += noLinksInfluence;
+            }
+        } else {
+            // Splitting the importance to the outgoing edges.
+            double influence = kDAMPENING / edges_[c].size();
+            for (const auto &node : edges_[c]) {
+                matrix[node->getId()][c] += influence;
+            }
+        }
+    }
+    return matrix;
+}
+
 SparseMatrix PageRank::createSparseGoogle() const {
-    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_;
+    double positiveAdjustment = (1.0 - kDAMPENING) / num_nodes_; // Default Amount Added to Every Entry
     double noLinksInfluence = (kDAMPENING / num_nodes_) + positiveAdjustment;
 
     SparseMatrix matrix;
     matrix.resize(num_nodes_, list<tuple<unsigned, double>>());
 
     for (size_t c = 0; c < num_nodes_; c++) {
+        // Adding the nodes with no outgoing edges. 
         if (edges_[c].size() == 0) {
             for (size_t r = 0; r < num_nodes_; r++) {
                 matrix[r].push_back(tuple<unsigned, double>(c, noLinksInfluence));
             }
         } 
         else {
+            // Adding the outgoing edges to the sparse matrix.
             double influence = (kDAMPENING / edges_[c].size()) + positiveAdjustment;
             for (const auto &node : edges_[c]) {
                 matrix[node->getId()].push_back(tuple<unsigned, double>(c, influence));

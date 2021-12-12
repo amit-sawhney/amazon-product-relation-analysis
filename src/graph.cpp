@@ -86,6 +86,7 @@ void Graph::createNodeList()
 
 void Graph::parseNodes(string filename)
 {
+    // Checking if file is exists.
     ifstream data(filename);
     if(data.fail()) {
         throw invalid_argument("The file does not exist");
@@ -97,7 +98,8 @@ void Graph::parseNodes(string filename)
 
     if (data.is_open()) {
         while (getline(data, edge)) {
-            if (edge[0] != '#') { // Ignore Comments from input file
+            // Adding Edges to adjacency list and Ignore Comments from input file
+            if (edge[0] != '#') {
                 istringstream edgeStream;
                 edgeStream.str(edge);
                 edgeStream >> from;

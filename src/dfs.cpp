@@ -5,6 +5,7 @@ DFS::DFS(AdjList &edges, vector<Node> &nodes)
     vector<bool> visited;
     visited.resize(nodes.size(), false);
 
+    // Looping through all the nodes while counting connected components
     connected_components_ = 0;
     for (size_t i = 0; i < nodes.size(); i++) {
         if(!visited[i]) {
@@ -19,6 +20,7 @@ void DFS::DFSHelper(int id, vector<bool> &visited, AdjList &edges, vector<Node> 
     futureVisits.push(id);
     visited[id] = true;
 
+    // Looping until all neighboring nodes of this component have been visited.
     while (!futureVisits.empty()) {
         int top = futureVisits.top();
         futureVisits.pop();    

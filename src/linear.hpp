@@ -20,6 +20,7 @@ class Linear {
             vector<double> output;
             output.resize(matrix[0].size(), 0.0);
 
+            // Row Vector Multiplication
             for (size_t r = 0; r < matrix[0].size(); r++) {
                 for (size_t c = 0; c < matrix.size(); c++) {
                     output[r] += matrix[r][c] * vec[c];
@@ -44,10 +45,14 @@ class Linear {
             
             for (size_t i = 0; i < sparse.size(); i++) {
                 double nonZeroSum = 0.0;
+
+                // Adding all the non-Sparse Values
                 for (const auto &tup : sparse[i]) {
                     nonZeroSum += vec[get<0>(tup)];
                     output[i] += get<1>(tup) * vec[get<0>(tup)];
                 }
+
+                // Adding the remaining Sparse Values since they are all the same.
                 output[i] += sparseValue * (vecSum - nonZeroSum);
             }
             return output;
