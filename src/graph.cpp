@@ -184,7 +184,6 @@ void Graph::BetweennessCentrality() const
         cout << (x.first)->getId() << ": " << x.second << endl;
     }
 
-    cout << "FLDKLFJLKDFJKLJFDLKKLDF" << endl;
 }
 
 void Graph::createNodeList()

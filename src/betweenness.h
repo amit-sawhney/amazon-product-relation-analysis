@@ -7,6 +7,7 @@
 #include <list>
 #include <vector>
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 
 private:
     stack<Node *> node_stack_;
-    map<Node *, list<Node *>> predecessors_;
+    map<Node *, vector<Node *>> predecessors_;
     map<Node *, double> sigma_;
     map<Node *, double> betweenness_values_;
     vector<Node> nodes_;

@@ -218,7 +218,7 @@ TEST_CASE("Page Rank - Multiple Components Graph - Sparse", "[sprint=1]")
   remove("Test_PageRank.txt");
 }
 
-TEST_CASE("Betweenness Centrality", "[dumbo]")
+TEST_CASE("Betweenness Centrality", "[betweenness]")
 {
   Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "Test");
   // vector<double> expected{0.1011466592, 0.2355230408, 0.1011466592, 0.1584395494, 0.1011466592, 0.1441578829, 0.1584395494};
