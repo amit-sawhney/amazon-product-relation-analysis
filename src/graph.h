@@ -58,8 +58,6 @@ public:
 
     AdjList getEdges() const;
 
-    unsigned getConnectedComponents() const;
-
 private:
     unsigned num_nodes_;
     unsigned connected_components_;

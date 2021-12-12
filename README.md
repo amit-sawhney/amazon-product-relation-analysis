@@ -92,14 +92,13 @@ make test
 
 #### Argument Example
 ```bash
-make test [spring=0]
+make test [parse]
 ```
 #### Available Arguments
-- `spring=0`
-- `spring=1`
+- `parse`
 - `dfs`
 - `pagerank`
-- `betweencentrality`
+- `betwenness`
 
 ### Graph Parsing
 
@@ -111,13 +110,6 @@ Ensured reliable graph parsing from input files by testing the following conditi
 - Edge cases
   -  Test extraneous info at top of file is not read
 
-### Number of Connected Components Calculated
-Ensured accurate connected component calculations by testing the following conditions:
-- Test connected directed graph
-- Test connected undirected graph
-- Test unconnected directed graph
-- Test unconnected undirected graph
-
 ### DFS Traversal
 Ensured correct DFS traversals by testing the following conditions:
 - Test connected directed graph
@@ -127,6 +119,7 @@ Ensured correct DFS traversals by testing the following conditions:
 
 ### Page Rank Matrix
 - Validated Google Page Rank matrix creation by calculating the values of the matrix
+- Validated that the the values stored by the Sparse Matrix are accurate
 
 ### Matrix-Vector Multiplication 
 - Validated Matrix-vector multiplication by calculating the values of the product
@@ -141,9 +134,7 @@ Validated the values of Matrix-sparce vector calculations by testing the followi
 
 ### Page Rank
 Ensured accurate page rank calculations by testing the following conditions
-- Test condensed connected graph
 - Test sparce connected graph
-- Test condensed unconnected graph
 - Test sparce unconnected graph 
 
 ### Betweenness Centrality

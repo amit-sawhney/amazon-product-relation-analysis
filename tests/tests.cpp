@@ -41,35 +41,6 @@ TEST_CASE("Parse Nodes - Multiple Components Undirected Graph", "[parse]") {
   REQUIRE(adjacencyList == "|0| -> 1 -> 2 -> 4\n|1| -> 0 -> 3 -> 6\n|2| -> 0 -> 5\n|3| -> 1\n|4| -> 0 -> 5\n|5| -> 2 -> 4\n|6| -> 1\n|7| -> 8\n|8| -> 7 -> 9\n|9| -> 8 -> 10\n|10| -> 9\n|11|\n");
 }
 
-// Beginning of Counting the Number of Connected Components Tests
-TEST_CASE("Number of Connected Components - Connected Directed Graph", "[dfs]") {
-  Graph g("tests/dummy_data/ConnectedDirectedGraph.txt", 7, "");
-  g.Traversal();
-  remove("deliverables/_Traversal.txt");
-  REQUIRE(1 == g.getConnectedComponents());
-}
-
-TEST_CASE("Number of Connected Components - Connected Undirected Graph", "[dfs]") {
-  Graph g("tests/dummy_data/ConnectedUndirectedGraph.txt", 7, "");
-  g.Traversal();
-  remove("deliverables/_Traversal.txt");
-  REQUIRE(1 == g.getConnectedComponents());
-}
-
-TEST_CASE("Number of Connected Components - Multiple Components Directed Graph", "[dfs]") {
-  Graph g("tests/dummy_data/ComponentsDirectedGraph.txt", 12, "");
-  g.Traversal();
-  remove("deliverables/_Traversal.txt");
-  REQUIRE(4 == g.getConnectedComponents());
-}
-
-TEST_CASE("Number of Connected Components - Multiple Components Undirected Graph", "[dfs]") {
-  Graph g("tests/dummy_data/ComponentsUndirectedGraph.txt", 12, "");
-  g.Traversal();
-  remove("deliverables/_Traversal.txt");
-  REQUIRE(3 == g.getConnectedComponents());
-}
-
 // Beginning of Comparing DFS Traversal Order
 string readFile(string filename)
 {
