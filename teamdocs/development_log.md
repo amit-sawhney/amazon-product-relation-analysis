@@ -14,7 +14,7 @@ To fix this, we will probably have to use a sparse matrix so the size complexity
   - We wrote the corresponding test cases for every part of the project that we have so far implemented.
 
 ## Week 2 
-###### (We accidentally decided to make a new file for each log entry, so this week's progress was transferred from a file that was created a week ago).
+###### (We accidentally decided to make a new file for each log entry, so this week's progress was transferred from a file (IGNORE-dev-log-12-15.md) that was created a week ago).
 ### Progress so far:
   - Finished iterator for DFS along with print out traversal
   - Started implementing Floyd-Warshall for Betweenness Centrality
@@ -27,3 +27,14 @@ To fix this, we will probably have to use a sparse matrix so the size complexity
   - Finish Tests
   - Finish documentation
   
+## Week 3
+### Progress
+  - We adjusted PageRank to use sparse matrices to save time and space.
+  - We added functionality to our code by including command line arguments. 
+  - We completed the Betweenness Centrality Algorithm.
+  - We optimized the Betweenness Centrality Shortest Path by using the Brandes Algorithm.
+  - We wote Tests for Betweenness Centrality.
+  - We added a comparsion between Betweenness Centrality and PageRank. 
+  - We documented all our code.
+  - We created the ReadME.md and Results.md
+  - We recorded our presentation
