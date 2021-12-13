@@ -174,15 +174,19 @@ void Graph::saveAnalysis()
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_Analysis.txt");
     myfile << "Analysis of Page Rank Versus Betweenness Centrality for " << to_string(num_nodes_) << " nodes:" << endl;
-    myfile << "We will be comparing the rank of each of these scores with '1' being the best node." << endl;
+    myfile << "We will be comparing the rank of each of these scores with '1' being the best node." << endl << endl;
+
     double difference = 0;
     string output = "";
+
     for (unsigned i = 0; i < num_nodes_; i++) {
         output += "Node " + to_string(nodes_[i].getId()) + "  ->  " + to_string(nodes_[i].getImportanceRank())
                                                           + "  ->  " + to_string(nodes_[i].getBetweennessRank()) + "\n";
         difference += abs((double) nodes_[i].getImportanceRank() - nodes_[i].getBetweennessRank());
     }
-    myfile << "Rank Relative Difference: " << to_string(difference/num_nodes_) << endl << endl;
+
+    myfile << "Rank Average Difference: " << to_string(difference / num_nodes_) << " ranks." << endl;
+    myfile << "Rank Relative Difference: " << to_string(100 * difference / num_nodes_ / num_nodes_) << "%." << endl << endl;
     myfile << "\t\tPageRank   Betweenness Centrality" << endl;
     myfile << output << endl;
     myfile.close();

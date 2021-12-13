@@ -1,6 +1,9 @@
 Analysis of Page Rank Versus Betweenness Centrality for 10000 nodes:
 We will be comparing the rank of each of these scores with '1' being the best node.
 
+Rank Average Difference: 2557.445000 ranks.
+Rank Relative Difference: 25.5745%.
+
 		PageRank   Betweenness Centrality
 Node 0  ->  9371  ->  6183
 Node 1  ->  9921  ->  7549
@@ -10002,3 +10005,4 @@ Node 9996  ->  4603  ->  8122
 Node 9997  ->  7802  ->  7647
 Node 9998  ->  7147  ->  6984
 Node 9999  ->  9104  ->  10000
+
