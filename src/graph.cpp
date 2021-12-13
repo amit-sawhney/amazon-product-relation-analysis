@@ -63,6 +63,7 @@ void Graph::RunPageRank()
     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
     for (unsigned i = 0; i < num_nodes_; i++) {
+        nodes_[sorted_nodes[i].getId()].setImportanceRank(i + 1);
         myfile << "Node " << to_string(sorted_nodes[i].getId()) << " -> " << to_string(sorted_nodes[i].getImportance()) << endl;
     }
     myfile.close();
@@ -94,6 +95,7 @@ map<Node*, double> Graph::BetweennessCentrality()
     myfile << "Betweenness Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
     for (unsigned i = 0; i < num_nodes_; i++) {
+        nodes_[sorted_nodes[i].getId()].setBetweennessRank(i + 1);
         myfile << "Node " << to_string(sorted_nodes[i].getId()) << " -> " << to_string(sorted_nodes[i].getBetweenness()) << endl;
     }
     myfile.close();
@@ -171,12 +173,13 @@ void Graph::saveAnalysis()
     // Saving Page Rank Importance and Betweenness Value to File
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_Analysis.txt");
-    myfile << "Analysis of Page Rank Versus Betweenness Centrality for " << to_string(num_nodes_) << " nodes:" << endl << endl;
-    myfile << "Node\t  PageRank\t  Betweenness Centrality" << endl;
+    myfile << "Analysis of Page Rank Versus Betweenness Centrality for " << to_string(num_nodes_) << " nodes:" << endl;
+    myfile << "We will be comparing the rank of each of these scores with '1' being the best node." << endl << endl;
+    myfile << "\t\tPageRank   Betweenness Centrality" << endl;
 
     for (unsigned i = 0; i < num_nodes_; i++) {
-        myfile << "Node " << to_string(nodes_[i].getId()) << " -> " << to_string(nodes_[i].getImportance())
-                                                          << " -> " << to_string(nodes_[i].getBetweenness()) << endl;
+        myfile << "Node " << to_string(nodes_[i].getId()) << "  ->  " << to_string(nodes_[i].getImportanceRank())
+                                                          << "  ->  " << to_string(nodes_[i].getBetweennessRank()) << endl;
     }
     myfile.close();
 }
