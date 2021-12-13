@@ -60,7 +60,7 @@ public:
      * @return map from the node pointer to its betweenness score.
      * O(VE) Time
      */
-    map<Node*, double> BetweennessCentrality() const;
+    map<Node*, double> BetweennessCentrality();
 
     /**
      * Method that will output the PageRank Importance Score versus Betweenness Value in One File.

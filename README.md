@@ -153,49 +153,21 @@ Ensured accurate page rank calculations by testing the following conditions
   <summary>All tests</summary>
   
 <code>Parse Nodes - Connected Directed Graph</code><br />
-<code>Parse Nodes - Connected Directed Graph</code><br />
-<code>Parse Nodes - Don't Read Complete File</code><br />
 <code>Parse Nodes - Don't Read Complete File</code><br />
 <code>Parse Nodes - Connected Undirected Graph</code><br />
-<code>Parse Nodes - Connected Undirected Graph</code><br />
-<code>Parse Nodes - Multiple Components Directed Graph</code><br />
 <code>Parse Nodes - Multiple Components Directed Graph</code><br />
 <code>Parse Nodes - Multiple Components Undirected Graph</code><br />
-<code>Parse Nodes - Multiple Components Undirected Graph</code><br />
-<code>Number of Connected Components - Connected Directed Graph</code><br />
-<code>Number of Connected Components - Connected Directed Graph</code><br />
-<code>Number of Connected Components - Connected Undirected Graph</code><br />
-<code>Number of Connected Components - Connected Undirected Graph</code><br />
-<code>Number of Connected Components - Multiple Components Directed Graph</code><br />
-<code>Number of Connected Components - Multiple Components Directed Graph</code><br />
-<code>Number of Connected Components - Multiple Components Undirected Graph</code><br />
-<code>Number of Connected Components - Multiple Components Undirected Graph</code><br />
-<code>DFS Traversal - Connected Directed Graph</code><br />
 <code>DFS Traversal - Connected Directed Graph</code><br />
 <code>DFS Traversals - Connected Undirected Graph</code><br />
-<code>DFS Traversals - Connected Undirected Graph</code><br />
-<code>DFS Traversal - Multiple Components Directed Graph</code><br />
 <code>DFS Traversal - Multiple Components Directed Graph</code><br />
 <code>DFS Traversal - Multiple Components Undirected Graph</code><br />
-<code>DFS Traversal - Multiple Components Undirected Graph</code><br />
-<code>Create Google Page Rank Matrix</code><br />
 <code>Create Google Page Rank Matrix</code><br />
 <code>Matrix Vector Multiplication</code><br />
-<code>Matrix Vector Multiplication</code><br />
-<code>Sparse Matrix Vector Multiplication</code><br />
 <code>Sparse Matrix Vector Multiplication</code><br />
 <code>Sparse Matrix Vector Multiplication with NonZero Sparse Values</code><br />
-<code>Sparse Matrix Vector Multiplication with NonZero Sparse Values</code><br />
 <code>2-Norm of Vector</code><br />
-<code>2-Norm of Vector</code><br />
-<code>Page Rank - Connected Graph - Condensed</code><br />
-<code>Page Rank - Connected Graph - Condensed</code><br />
-<code>Page Rank - Connected Graph - Sparse</code><br />
-<code>Page Rank - Connected Graph - Sparse</code><br />
-<code>Page Rank - Multiple Components Graph - Condensed</code><br />
-<code>Page Rank - Multiple Components Graph - Condensed</code><br />
-<code>Page Rank - Multiple Components Graph - Sparse</code><br />
-<code>Page Rank - Multiple Components Graph - Sparse</code><br />
+<code>Page Rank - Connected Graph</code><br />
+<code>Page Rank - Multiple Components Graph</code><br />
 <code>Betweenness Centrality - Directed One Component </code> <br/>
 <code>Betweenness Centrality - Directed Multiple Components Graph </code> <br/>
 </details>
