@@ -44,7 +44,8 @@ public:
 
     /**
      * Method that will run Google's Page Rank Algorithm on its own graph, saving it to a deliverable.
-     * O(n ^ 2) Time.
+     * Worst Case - O(n ^ 2) Time. 
+     * Best Case - O(E) Time.
      */
     void RunPageRank();
 
@@ -57,8 +58,14 @@ public:
     /**
      * Method that will create a Betweenness Object and the calculate the betweenness score for each of the node objects. 
      * @return map from the node pointer to its betweenness score.
+     * O(VE) Time
      */
     map<Node*, double> BetweennessCentrality() const;
+
+    /**
+     * Method that will output the traversal order, PageRank Importance Score, and the Betweenness Value in One File.
+     */
+    void saveAnalysis();
 
     /**
      * Method that will return a string of the adjacency list.

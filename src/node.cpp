@@ -4,6 +4,7 @@
 Node::Node(int id) {
     id_ = id;
     importance_ = 0;
+    betweenness_ = 0;
 }
 
 void Node::setImportance(double importance) {
