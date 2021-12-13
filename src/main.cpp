@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
 
     } catch (exception& e) {
         cout << e.what() << endl;
-        cout << "Pleas enter 1. Data File Path   2. Number of Nodes   3. Output File Name   4. Algorithm Name" << endl;
+        cout << "Please enter 1. Data File Path   2. Number of Nodes   3. Output File Name   4. Algorithm Name" << endl;
     }
 
     return 0;
