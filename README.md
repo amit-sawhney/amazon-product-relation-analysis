@@ -72,8 +72,16 @@ make all
 make
 ```
 
-### Choosing Input File and Output Location
-- `make input_file output_directory`
+### Choosing Input File, Output Location, and algorithm
+- `make`
+- `./main data_path number_of_nodes name_output algorithm`
+    - i.e. `./main data/input.txt 1200 output.txt dfs`
+
+### List of all possible algorithms to run
+- `dfs` - runs dfs algorithm
+- `pagerank` - runs pagerank algorithm
+- `betweenness` - runs betweenness centrality algorithm
+- `all` - runs all algorithms
 
 ### Cleaning Directory
 
