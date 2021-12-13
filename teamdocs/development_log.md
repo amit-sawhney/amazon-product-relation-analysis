@@ -14,7 +14,7 @@ To fix this, we will probably have to use a sparse matrix so the size complexity
   - We wrote the corresponding test cases for every part of the project that we have so far implemented.
 
 ## Week 2 
-###### (We accidentally decided to make a new file for each log entry, so this week's progress was transferred from a file that was created a week ago).
+###### (We accidentally decided to make a new file for each log entry, so this week's progress was transferred from a file (IGNORE-dev-log-12-15.md) that was created a week ago).
 ### Progress so far:
   - Finished iterator for DFS along with print out traversal
   - Started implementing Floyd-Warshall for Betweenness Centrality
