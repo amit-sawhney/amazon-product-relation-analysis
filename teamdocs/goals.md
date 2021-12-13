@@ -1,4 +1,4 @@
-# Final Project Proposal
+# Goals
 
 ## Leading Question
 In our project, we are hoping to find some pattern between buying habits and how Amazon presents items that are frequently bought together. Specifically, we would like to explore the extent of importance of certain items, to see which items Amazon recommends together and if we can find any vertices that act as "hubs" for many items, meaning that it is more popular and bought with more other items. 
