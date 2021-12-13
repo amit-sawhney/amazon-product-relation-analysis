@@ -46,7 +46,7 @@ void Graph::Traversal()
 
 void Graph::RunPageRank() 
 {
-    // Getting the Probabilities
+    // Getting and Setting the Probabilities
     PageRank pagerank = PageRank(edges_);
     vector<double> probabilities = pagerank.createProbabilities();
     for (unsigned i = 0; i < probabilities.size(); i++) {
@@ -54,15 +54,16 @@ void Graph::RunPageRank()
     }
 
     // Sorting the Probabilities
-    sort(nodes_.begin(), nodes_.end(), compareProbabilities);
+    vector<Node> sorted_nodes = nodes_;
+    sort(sorted_nodes.begin(), sorted_nodes.end(), compareProbabilities);
 
     // Saving Probabilities to File
     ofstream myfile;
     myfile.open ("deliverables/" + name_ + "_PageRank.txt");
     myfile << "Importance Score for " << to_string(num_nodes_) << " nodes:" << endl;
 
-    for (unsigned i = 0; i < probabilities.size(); i++) {
-        myfile << "Node " << to_string(nodes_[i].getId()) << " -> " << to_string(nodes_[i].getImportance()) << endl;
+    for (unsigned i = 0; i < num_nodes_; i++) {
+        myfile << "Node " << to_string(sorted_nodes[i].getId()) << " -> " << to_string(sorted_nodes[i].getImportance()) << endl;
     }
     myfile.close();
 }
@@ -75,9 +76,34 @@ bool Graph::compareProbabilities(const Node node1, const Node node2)
 
 map<Node *, double> Graph::BetweennessCentrality() const
 {
+    // Getting and Setting the Betweenness Scores
     Betweenness b(nodes_, edges_);
-    map<Node *, double> betweenness = b.calculateBetweenness();
+    map<Node*, double> betweenness = b.calculateBetweenness();
+
+    for (auto it = betweenness.begin(); it != betweenness.end(); ++it) {
+        it->first->setBetweenness(it->second);
+    }
+
+    // Sorting the Betweenness Scores
+    vector<Node> sorted_nodes = nodes_;
+    sort(sorted_nodes.begin(), sorted_nodes.end(), compareBetweenness);
+
+    // Saving Probabilities to File
+    ofstream myfile;
+    myfile.open ("deliverables/" + name_ + "_Betweenness.txt");
+    myfile << "Betweenness Score for " << to_string(num_nodes_) << " nodes:" << endl;
+
+    for (unsigned i = 0; i < num_nodes_; i++) {
+        myfile << "Node " << to_string(sorted_nodes[i].getId()) << " -> " << to_string(sorted_nodes[i].getBetweenness()) << endl;
+    }
+    myfile.close();
+
     return betweenness;
+}
+
+bool Graph::compareBetweenness(const Node node1, const Node node2) 
+{
+    return (node1.getBetweenness() > node2.getBetweenness());
 }
 
 void Graph::createNodeList()

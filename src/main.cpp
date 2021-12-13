@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
         Graph g(file, num_nodes, name);
         g.Traversal();
         g.RunPageRank();
+        g.BetweennessCentrality();
 
     } catch (exception& e) {
         cout << e.what() << endl;

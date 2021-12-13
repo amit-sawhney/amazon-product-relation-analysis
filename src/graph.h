@@ -48,8 +48,16 @@ public:
      */
     void RunPageRank();
 
+    // Helper Method to Sort the Nodes by Page Rank Probability Scores
     static bool compareProbabilities(const Node node1, const Node node2);
 
+    // Helper Method to Sort the Nodes by Betweenness Score
+    static bool compareBetweenness(const Node node1, const Node node2);
+
+    /**
+     * Method that will create a Betweenness Object and the calculate the betweenness score for each of the node objects. 
+     * @return map from the node pointer to its betweenness score.
+     */
     map<Node*, double> BetweennessCentrality() const;
 
     /**

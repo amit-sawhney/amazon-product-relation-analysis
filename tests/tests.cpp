@@ -182,6 +182,9 @@ TEST_CASE("Betweenness Centrality - Directed One Component", "[betweenness]")
   for (auto num : output) {
     REQUIRE(expected[num.first -> getId()] == num.second);
   }
+
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_Betweenness.txt");
 }
 
 TEST_CASE("Betweenness Centrality - Directed Multiple Components Graph", "[betweenness]")
@@ -192,4 +195,7 @@ TEST_CASE("Betweenness Centrality - Directed Multiple Components Graph", "[betwe
   for (auto num : output) {
     REQUIRE(expected[num.first -> getId()] == num.second);
   }
+  
+  remove("deliverables/Test_Traversal.txt");
+  remove("deliverables/Test_Betweenness.txt");
 }
