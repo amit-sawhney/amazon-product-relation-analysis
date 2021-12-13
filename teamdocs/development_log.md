@@ -27,3 +27,14 @@ To fix this, we will probably have to use a sparse matrix so the size complexity
   - Finish Tests
   - Finish documentation
   
+## Week 3
+### Progress
+  - We adjusted PageRank to use sparse matrices to save time and space.
+  - We added functionality to our code by including command line arguments. 
+  - We completed the Betweenness Centrality Algorithm.
+  - We optimized the Betweenness Centrality Shortest Path by using the Brandes Algorithm.
+  - We wote Tests for Betweenness Centrality.
+  - We added a comparsion between Betweenness Centrality and PageRank. 
+  - We documented all our code.
+  - We created the ReadME.md and Results.md
+  - We recorded our presentation
