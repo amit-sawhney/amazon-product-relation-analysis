@@ -165,3 +165,18 @@ string Graph::outputEdges() const
     }
     return output;
 }
+
+void Graph::saveAnalysis() 
+{
+    // Saving Page Rank Importance and Betweenness Value to File
+    ofstream myfile;
+    myfile.open ("deliverables/" + name_ + "_Analysis.txt");
+    myfile << "Analysis of Page Rank Versus Betweenness Centrality for " << to_string(num_nodes_) << " nodes:" << endl << endl;
+    myfile << "Node\t  PageRank\t  Betweenness Centrality" << endl;
+
+    for (unsigned i = 0; i < num_nodes_; i++) {
+        myfile << "Node " << to_string(nodes_[i].getId()) << " -> " << to_string(nodes_[i].getImportance())
+                                                          << " -> " << to_string(nodes_[i].getBetweenness()) << endl;
+    }
+    myfile.close();
+}

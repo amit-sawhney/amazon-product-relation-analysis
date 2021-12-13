@@ -63,7 +63,7 @@ public:
     map<Node*, double> BetweennessCentrality() const;
 
     /**
-     * Method that will output the traversal order, PageRank Importance Score, and the Betweenness Value in One File.
+     * Method that will output the PageRank Importance Score versus Betweenness Value in One File.
      */
     void saveAnalysis();
 
