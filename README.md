@@ -33,6 +33,7 @@ In our project, we are hoping to find some pattern between buying habits and how
 The difference in the output we get from Betweenness Centrality and PageRank is that PageRank shows where all the edges lead to, while the Betweenness Centrality shows where all the shortests paths will go through as opposed to where they will end up.
 
 [Full Proposal](https://github-dev.cs.illinois.edu/cs225-fa21/dm32-sawhney4-adityaj5-jjkuang2/blob/main/teamdocs/final_project_proposal.md)
+[Presentation Video](https://drive.google.com/file/d/1xwQN-el2-lN46PHbVswfz4erAs90USGh/view?usp=sharing)
 
 ## Repository Breakdown
 
