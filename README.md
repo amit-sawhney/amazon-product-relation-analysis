@@ -12,8 +12,6 @@
     </tr>
 </table>
 
-<h4 align="center">Amazing CS 225 Project Group Minus Amit</h4>
-
 <p align="center">
   <a href="#background-and-leading-question">Background and Leading Question</a> •
   <a href="#repository-breakdown">Repository Breakdown</a> •
